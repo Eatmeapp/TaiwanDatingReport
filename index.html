@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 台灣交友年報 | 數據與愛情的距離</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-pink': '#FF6B6B',
+                        'brand-dark': '#2D3436',
+                        'brand-light': '#F9F9F9',
+                        'accent-blue': '#4ECDC4',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+
+        @keyframes pulse-soft {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-brand-dark font-sans overflow-x-hidden">
+
+    <!-- Hero Section: 主題導入 -->
+    <header class="min-h-screen flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white px-6 text-center">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
+        
+        <div class="relative z-10 max-w-3xl reveal active">
+            <span class="text-accent-blue tracking-[0.3em] uppercase text-sm mb-4 block font-bold">Data Report</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                2025 <br>
+                <span class="text-brand-pink">台灣交友年報</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 font-light mb-10">
+                在演算法與真實情感之間，<br>
+                我們究竟在尋找什麼？
+            </p>
+            <div class="animate-bounce mt-10 text-gray-400">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Chapter 1: Dining & Dating -->
+    <section class="py-20 px-4 md:px-10 max-w-6xl mx-auto">
+        <div class="mb-16 reveal text-center md:text-left">
+            <span class="text-brand-pink font-bold text-lg">CHAPTER 01</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">餐桌上的心理戰：約會飲食調查</h2>
+            <p class="text-gray-600 max-w-2xl">從餐廳選擇到付款方式，每一口都是價值觀的碰撞。</p>
+        </div>
+
+        <!-- Rankings Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <!-- 20-29 F -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 reveal hover:shadow-lg transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-brand-pink mr-3"><i class="fas fa-female"></i></div>
+                    <h3 class="font-bold text-xl">20-29歲 女性最愛</h3>
+                </div>
+                <ol class="space-y-3 text-gray-600">
+                    <li class="flex items-center"><span class="font-bold mr-3 text-brand-pink">01</span> 網美系早午餐 (Brunch)</li>
+                    <li class="flex items-center"><span class="font-bold mr-3 text-brand-pink">02</span> 特色餐酒館 (Bistro)</li>
+                    <li class="flex items-center"><span class="font-bold mr-3 text-brand-pink">03</span> 日式精緻燒肉</li>
+                </ol>
+            </div>
+            
+            <!-- 20-29 M -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 reveal hover:shadow-lg transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-3"><i class="fas fa-male"></i></div>
+                    <h3 class="font-bold text-xl">20-29歲 男性最愛</h3>
+                </div>
+                <ol class="space-y-3 text-gray-600">
+                    <li class="flex items-center"><span class="font-bold mr-3 text-blue-500">01</span> 吃到飽火鍋/燒烤</li>
+                    <li class="flex items-center"><span class="font-bold mr-3 text-blue-500">02</span> 日式居酒屋</li>
+                    <li class="flex items-center"><span class="font-bold mr-3 text-blue-500">03</span> 平價牛排館</li>
+                </ol>
+            </div>
+
+            <!-- 30+ F -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 reveal hover:shadow-lg transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-brand-pink mr-3"><i class="fas fa-glass-cheers"></i></div>
+                    <h3 class="font-bold text-xl">30歲以上 女性最愛</h3>
+                </div>
+                <ol class="space-y-3 text-gray-600">
+                    <li class="flex items-center"><span class="font-bold mr-3 text-brand-pink">01</span> 無菜單料理 (Omakase)</li>
+                    <li class="flex items-center"><span class="font-bold mr-3 text-brand-pink">02</span> 私廚料理</li>
+                    <li class="flex items-center"><span class="font-bold mr-3 text-brand-pink">03</span> 高級西餐廳</li>
+                </ol>
+            </div>
+
+            <!-- 30+ M -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 reveal hover:shadow-lg transition-shadow duration-300">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-3"><i class="fas fa-briefcase"></i></div>
+                    <h3 class="font-bold text-xl">30歲以上 男性最愛</h3>
+                </div>
+                <ol class="space-y-3 text-gray-600">
+                    <li class="flex items-center"><span class="font-bold mr-3 text-blue-500">01</span> 海鮮餐廳</li>
+                    <li class="flex items-center"><span class="font-bold mr-3 text-blue-500">02</span> 威士忌酒吧 (Bar)</li>
+                    <li class="flex items-center"><span class="font-bold mr-3 text-blue-500">03</span> 傳統熱炒/合菜</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Interactive Stats Block -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Sport vs Drink -->
+            <div class="reveal bg-gray-900 text-white p-8 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <i class="fas fa-running text-9xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-6">運動 VS 飲酒？</h3>
+                <p class="mb-4 text-gray-400">現代人最喜歡的約會方式</p>
+                <div class="flex items-center mb-2">
+                    <span class="w-20 font-bold">運動</span>
+                    <div class="flex-1 h-4 bg-gray-700 rounded-full overflow-hidden mx-3">
+                        <div class="h-full bg-accent-blue w-[62%]"></div>
+                    </div>
+                    <span class="text-accent-blue font-bold">62%</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="w-20 font-bold">飲酒</span>
+                    <div class="flex-1 h-4 bg-gray-700 rounded-full overflow-hidden mx-3">
+                        <div class="h-full bg-brand-pink w-[38%]"></div>
+                    </div>
+                    <span class="text-brand-pink font-bold">38%</span>
+                </div>
+                <p class="mt-6 text-sm text-gray-400">結論：健康生活已成為新性感指標。</p>
+            </div>
+
+            <!-- AA Payment Interactive -->
+            <div class="reveal bg-brand-pink text-white p-8 rounded-2xl cursor-pointer hover:bg-red-500 transition-colors relative" onclick="toggleTip('aa-tip')">
+                <div class="flex justify-between items-start">
+                    <h3 class="text-2xl font-bold">AA制真的公平嗎？</h3>
+                    <i class="far fa-hand-point-up animate-bounce"></i>
+                </div>
+                <p class="mt-4 text-white/90">交友平台驚人統計...</p>
+                <div class="mt-8 text-center border-2 border-white/30 rounded-lg p-4 bg-white/10 backdrop-blur-sm">
+                    <p class="font-bold">點擊查看殘酷真相</p>
+                </div>
+                
+                <!-- Hidden Tip -->
+                <div id="aa-tip" class="hidden absolute inset-0 bg-white text-brand-dark p-6 rounded-2xl flex flex-col justify-center items-center text-center z-10 transition-all">
+                    <i class="fas fa-heart-broken text-4xl text-brand-pink mb-3"></i>
+                    <h4 class="text-xl font-bold mb-2">第二次約會成功率僅 30%</h4>
+                    <p class="text-sm text-gray-600">堅持完全AA的男生，容易被解讀為「計較」或「沒感覺」。<br>建議：這餐你請，下餐換她請（互相）。</p>
+                    <button class="mt-4 text-xs bg-gray-200 px-3 py-1 rounded-full">關閉</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 2: Preferences -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-10">
+            <div class="mb-16 reveal text-center md:text-left">
+                <span class="text-accent-blue font-bold text-lg">CHAPTER 02</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">第一眼的決勝點：交友喜好大調查</h2>
+            </div>
+
+            <!-- Photo Types: Like vs NO -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0 mb-16 rounded-3xl overflow-hidden shadow-xl reveal">
+                <div class="bg-green-50 p-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl mb-6 shadow-lg">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-green-800 mb-6">LIKE: 最受歡迎照片</h3>
+                    <ul class="space-y-4 text-left w-full max-w-xs">
+                        <li class="flex items-center bg-white p-3 rounded-lg shadow-sm"><i class="fas fa-camera text-green-500 mr-3"></i> 自然生活照 (不經意感)</li>
+                        <li class="flex items-center bg-white p-3 rounded-lg shadow-sm"><i class="fas fa-sun text-green-500 mr-3"></i> 陽光運動照</li>
+                        <li class="flex items-center bg-white p-3 rounded-lg shadow-sm"><i class="fas fa-paw text-green-500 mr-3"></i> 寵物合照 (好感度+50%)</li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 p-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center text-white text-2xl mb-6 shadow-lg">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-red-800 mb-6">NO: 直接滑掉的照片</h3>
+                    <ul class="space-y-4 text-left w-full max-w-xs">
+                        <li class="flex items-center bg-white p-3 rounded-lg shadow-sm"><i class="fas fa-users-slash text-red-500 mr-3"></i> 難辨主角的團體照</li>
+                        <li class="flex items-center bg-white p-3 rounded-lg shadow-sm"><i class="fas fa-car text-red-500 mr-3"></i> 刻意展示名車名錶</li>
+                        <li class="flex items-center bg-white p-3 rounded-lg shadow-sm"><i class="fas fa-mask text-red-500 mr-3"></i> 墨鏡/口罩遮全臉</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Horoscope & Stats -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Message Response Rate -->
+                <div class="lg:col-span-2 reveal bg-gray-50 p-8 rounded-2xl border border-gray-200">
+                    <h3 class="font-bold text-xl mb-6 border-b pb-2">訊息回覆率與星座密碼</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <p class="text-sm text-blue-500 font-bold mb-2">男性回覆率</p>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center"><span class="text-gray-600">最高 TOP3</span> <span class="font-bold">雙子、天秤、射手</span></div>
+                                <div class="w-full bg-gray-200 h-2 rounded-full"><div class="bg-blue-400 h-2 rounded-full w-[85%]"></div></div>
+                                <div class="flex justify-between items-center mt-2"><span class="text-gray-600">最低 TOP3</span> <span class="font-bold">摩羯、金牛、處女</span></div>
+                                <div class="w-full bg-gray-200 h-2 rounded-full"><div class="bg-gray-400 h-2 rounded-full w-[40%]"></div></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-sm text-brand-pink font-bold mb-2">女性回覆率</p>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center"><span class="text-gray-600">最高 TOP3</span> <span class="font-bold">雙魚、天蠍、巨蟹</span></div>
+                                <div class="w-full bg-gray-200 h-2 rounded-full"><div class="bg-brand-pink h-2 rounded-full w-[80%]"></div></div>
+                                <div class="flex justify-between items-center mt-2"><span class="text-gray-600">最低 TOP3</span> <span class="font-bold">水瓶、獅子、牡羊</span></div>
+                                <div class="w-full bg-gray-200 h-2 rounded-full"><div class="bg-gray-400 h-2 rounded-full w-[35%]"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Economic Definition -->
+                <div class="reveal bg-brand-dark text-white p-8 rounded-2xl flex flex-col justify-center relative">
+                    <i class="fas fa-quote-left text-4xl text-gray-700 absolute top-6 left-6"></i>
+                    <h3 class="text-xl font-bold mb-4 relative z-10">女生眼中的<br>「經濟收入好」？</h3>
+                    <p class="text-gray-300 relative z-10 leading-relaxed">
+                        不是一定要有上億身家，而是具有：<br>
+                        1. 穩定的現金流<br>
+                        2. 有理財規劃與未來願景<br>
+                        3. 願意為生活品質適度消費
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-gray-700 relative z-10">
+                        <span class="text-xs text-gray-400 uppercase tracking-wider">Top 職業榜單</span>
+                        <div class="flex justify-between text-sm mt-2">
+                            <span>👩‍❤️‍👨 女愛：醫師、工程師、軍公教</span>
+                        </div>
+                        <div class="flex justify-between text-sm mt-1">
+                            <span>👨‍❤️‍👩 男愛：教師、護理師、空服員</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 3: NG Survey -->
+    <section class="py-20 bg-gray-900 text-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute -right-20 -top-20 w-96 h-96 bg-red-900 rounded-full blur-[100px] opacity-30"></div>
+        <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-purple-900 rounded-full blur-[100px] opacity-30"></div>
+
+        <div class="max-w-6xl mx-auto px-4 md:px-10 relative z-10">
+            <div class="mb-12 reveal text-center">
+                <span class="text-red-500 font-bold text-lg tracking-widest">WARNING ZONE</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-2 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">約會獵奇 NG 調查</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Weird Locations -->
+                <div class="reveal space-y-6">
+                    <h3 class="text-2xl font-bold border-l-4 border-red-500 pl-4">約會最奇葩地點 TOP3</h3>
+                    <div class="bg-gray-800 p-5 rounded-xl flex items-center transform hover:translate-x-2 transition-transform">
+                        <span class="text-3xl mr-4">🪦</span>
+                        <div>
+                            <h4 class="font-bold">墓園漫步</h4>
+                            <p class="text-sm text-gray-400">理由：這裡很安靜可以聊天... (但太安靜了)</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-xl flex items-center transform hover:translate-x-2 transition-transform">
+                        <span class="text-3xl mr-4">🏭</span>
+                        <div>
+                            <h4 class="font-bold">廢棄工廠</h4>
+                            <p class="text-sm text-gray-400">理由：覺得頹廢風很浪漫 (其實很危險)</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-xl flex items-center transform hover:translate-x-2 transition-transform">
+                        <span class="text-3xl mr-4">🧸</span>
+                        <div>
+                            <h4 class="font-bold">探險夾娃娃店一整晚</h4>
+                            <p class="text-sm text-gray-400">理由：想展現技巧，結果站了4小時</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NG Behaviors -->
+                <div class="reveal bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-exclamation-triangle text-yellow-500 mr-3"></i> 
+                        約會前最 NG 行為
+                    </h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <span class="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded mt-1 mr-3">TOP 1</span>
+                            <div>
+                                <h4 class="font-bold text-lg">身家調查式提問</h4>
+                                <p class="text-sm text-gray-400">「你薪水多少？有房嗎？車貸剩多少？」還沒見面就想看存摺。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded mt-1 mr-3">TOP 2</span>
+                            <div>
+                                <h4 class="font-bold text-lg">瘋狂傳訊 / 情緒勒索</h4>
+                                <p class="text-sm text-gray-400">「為什麼不回我？是不是在跟別人聊天？」壓迫感 MAX。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded mt-1 mr-3">TOP 3</span>
+                            <div>
+                                <h4 class="font-bold text-lg">遲到但主動道歉(卻沒改)</h4>
+                                <p class="text-sm text-gray-400">把「對不起我遲到了」當成口頭禪，卻從不準時。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 4: Summary & Chart -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6 reveal">
+            <h2 class="text-3xl font-bold text-center mb-10 text-brand-dark">2025 交友關鍵字總結</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="text-sm text-gray-500 border-b-2 border-gray-200">
+                            <th class="py-4 px-4">類別</th>
+                            <th class="py-4 px-4">關鍵發現</th>
+                            <th class="py-4 px-4">建議策略</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="py-4 px-4 font-bold text-brand-pink"><i class="fas fa-utensils mr-2"></i>約會飲食</td>
+                            <td class="py-4 px-4">氛圍大於口味，健康大於酒精</td>
+                            <td class="py-4 px-4">選擇有特色、安靜可對話的場所，避免吵雜</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="py-4 px-4 font-bold text-blue-500"><i class="fas fa-wallet mr-2"></i>金錢觀</td>
+                            <td class="py-4 px-4">AA制不再是絕對標準</td>
+                            <td class="py-4 px-4">採取「互相請客」制，建立更有人情味的連結</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="py-4 px-4 font-bold text-green-500"><i class="fas fa-image mr-2"></i>自我呈現</td>
+                            <td class="py-4 px-4">自然真實感勝過過度修圖</td>
+                            <td class="py-4 px-4">放上寵物、運動、生活照，避免墨鏡與炫富</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="py-4 px-4 font-bold text-red-500"><i class="fas fa-ban mr-2"></i>地雷區</td>
+                            <td class="py-4 px-4">急躁與情緒勒索是最大殺手</td>
+                            <td class="py-4 px-4">保持邊界感，舒適的對話節奏是成功的關鍵</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CTA Area -->
+            <div class="mt-20 text-center">
+                <p class="text-gray-500 mb-6">看完這些數據，你準備好改變策略了嗎？</p>
+                <button onclick="openModal()" class="pulse-btn bg-brand-pink text-white text-xl font-bold py-4 px-10 rounded-full shadow-xl hover:bg-red-500 hover:scale-105 transition-all transform flex items-center justify-center mx-auto">
+                    <span>解鎖 2025 交友核心結論</span>
+                    <i class="fas fa-key ml-3"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-500 py-10 text-center text-sm">
+        <p>&copy; 2025 台灣交友年報 | Designed for Connection</p>
+    </footer>
+
+    <!-- Modal Overlay -->
+    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="bg-white rounded-3xl p-8 md:p-12 max-w-lg w-11/12 relative z-10 transform scale-95 transition-transform duration-300 shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            
+            <div class="text-center">
+                <div class="w-20 h-20 bg-brand-pink/10 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-pink text-3xl">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">核心結論</h2>
+                <div class="text-left bg-gray-50 p-6 rounded-xl mb-6">
+                    <p class="text-lg leading-relaxed text-gray-700 font-medium">
+                        「數據可以優化篩選的效率，但無法取代相處的溫度。」
+                    </p>
+                    <p class="mt-4 text-gray-600 text-sm">
+                        2025年的趨勢顯示，人們越來越厭倦完美的包裝，轉而渴望<span class="text-brand-pink font-bold">「真實的脆弱」</span>與<span class="text-brand-pink font-bold">「輕鬆的陪伴」</span>。
+                        <br><br>
+                        不管是AA制還是餐廳選擇，重點從來不是規則本身，而是對方是否在乎你的感受。
+                    </p>
+                </div>
+                <button onclick="closeModal()" class="bg-gray-800 text-white py-3 px-8 rounded-lg font-bold hover:bg-gray-700 transition-colors w-full">
+                    我準備好去愛了
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Toggle Tips Logic
+        function toggleTip(id) {
+            const tip = document.getElementById(id);
+            if(tip.classList.contains('hidden')) {
+                tip.classList.remove('hidden');
+                setTimeout(() => {
+                    tip.style.opacity = 1;
+                }, 10);
+            } else {
+                tip.style.opacity = 0;
+                setTimeout(() => {
+                    tip.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('modal');
+        const modalContent = modal.querySelector('div.relative');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            // Small delay to allow display:block to apply before opacity transition
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close modal on Esc key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

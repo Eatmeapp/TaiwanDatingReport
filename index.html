@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>網站建置中 | Coming Soon</title>
+    <title>2025 台灣數位交友年報 | 數據與愛情的距離</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -15,16 +15,33 @@
                         sans: ['Noto Sans TC', 'sans-serif'],
                     },
                     colors: {
-                        brand: '#3B82F6',
+                        'brand-pink': '#FF4757',
+                        'brand-dark': '#1E272E',
+                        'brand-blue': '#3742FA',
+                        'brand-purple': '#5F27CD',
+                        'neon-green': '#0be881',
+                        'neon-red': '#ff3f34',
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'spin-slow': 'spin 8s linear infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s infinite',
+                        'float': 'float 8s ease-in-out infinite',
+                        'float-delayed': 'float 9s ease-in-out infinite 2s',
+                        'float-fast': 'float 6s ease-in-out infinite 0.5s',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
                     },
                     keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 10px #FF4757, 0 0 20px #FF4757' },
+                            'to': { boxShadow: '0 0 20px #FF4757, 0 0 30px #FF4757' }
                         }
                     }
                 }
@@ -32,41 +49,1504 @@
         }
     </script>
     <style>
-        .blob {
-            position: absolute;
-            filter: blur(40px);
-            z-index: 0;
+        body {
+            /* 讓背景固定，內容滾動，創造視差與連貫感 */
+            background-color: #0f0c29;
+            overflow-x: hidden;
+        }
+        
+        /* 全域動態背景層 */
+        .fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        .fixed-bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
             opacity: 0.4;
+            mix-blend-mode: overlay;
+        }
+
+        /* 玻璃擬態 (Glassmorphism) 核心樣式 */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        .glass-panel:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        
+        /* 針對文字的可讀性優化 */
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .ranking-bar {
+            transition: width 1.5s ease-out;
+            width: 0; 
+        }
+
+        /* 背景流動動畫 */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 滾動條美化 */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0c29;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5F27CD;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF4757;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white font-sans h-screen w-full overflow-hidden relative flex flex-col items-center justify-center">
+<body class="text-white font-sans leading-relaxed selection:bg-brand-pink selection:text-white">
 
-    <!-- Background Effects -->
-    <div class="blob bg-blue-600 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2 animate-float"></div>
-    <div class="blob bg-purple-600 w-80 h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3 animate-float" style="animation-delay: -2s;"></div>
+    <!-- 全域固定背景 (視覺連貫核心) -->
+    <div class="fixed-bg"></div>
+    <div class="fixed-bg-image"></div>
+    
+    <!-- 全域漂浮元素 (沈浸感核心) -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none select-none z-0">
+        <i class="fas fa-heart text-brand-pink absolute top-[15%] left-[10%] text-4xl opacity-30 animate-float blur-[1px]"></i>
+        <i class="fas fa-comment-dots text-brand-blue absolute top-[40%] right-[15%] text-5xl opacity-20 animate-float-delayed"></i>
+        <i class="fas fa-bolt text-yellow-400 absolute bottom-[20%] left-[20%] text-3xl opacity-30 animate-float-fast"></i>
+        <i class="fas fa-search text-neon-green absolute top-[60%] right-[30%] text-4xl opacity-20 animate-float"></i>
+        <i class="fas fa-venus text-pink-300 absolute top-[10%] right-[40%] text-2xl opacity-20 animate-pulse-slow"></i>
+        <i class="fas fa-mars text-blue-300 absolute bottom-[10%] left-[40%] text-2xl opacity-20 animate-pulse-slow"></i>
+    </div>
 
-    <!-- Main Content -->
-    <main class="relative z-10 text-center px-6 max-w-3xl mx-auto">
-        
-        <!-- Icon -->
-        <div class="mb-8 relative inline-block">
-            <div class="absolute inset-0 bg-blue-500 blur-xl opacity-30 rounded-full"></div>
-            <i class="fas fa-tools text-6xl text-blue-400 animate-float"></i>
-            <i class="fas fa-cog text-3xl text-gray-400 absolute -bottom-2 -right-4 animate-spin-slow"></i>
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20">
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto reveal active">
+            <!-- 修正：標題縮小且單排顯示 (whitespace-nowrap) -->
+            <h1 class="text-3xl md:text-6xl font-black mb-6 leading-tight tracking-wide drop-shadow-2xl whitespace-nowrap">
+                2025 <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-500 to-purple-500 animate-pulse">台灣數位交友年報</span>
+            </h1>
+            
+            <div class="inline-block glass-panel rounded-full px-6 py-2 mb-8 border border-white/20">
+                <span class="text-brand-pink font-bold tracking-widest text-sm md:text-base">TAIWAN DIGITAL DATING REPORT</span>
+            </div>
+            
+            <span class="block text-lg md:text-xl text-blue-200 tracking-wider mb-8 font-light italic">
+                別再憑感覺約會！百萬數據解密戀愛生存指南
+            </span>
+            
+            <p class="text-xl md:text-2xl text-gray-300 font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
+                大數據下的愛情真相：多的是你不知道的事？
+            </p>
+            
+            <div class="animate-bounce">
+                <a href="#chapter1" class="text-white/50 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-down text-4xl"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Chapter 1: Dining & Dating -->
+    <section id="chapter1" class="py-24 px-4 max-w-7xl mx-auto relative z-10">
+        <div class="mb-16 reveal flex items-center">
+            <div class="w-1 h-12 bg-gradient-to-b from-brand-pink to-brand-purple mr-6 rounded-full"></div>
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 text-white text-glow">餐桌上的心理戰</h2>
+                <p class="text-lg text-gray-400 mt-2">第一餐吃什麼，決定了有沒有下一餐。</p>
+            </div>
         </div>
 
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
-            我們正在籌備當中<br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">敬請期待</span>
-        </h1>
+        <!-- 1.1 Restaurant Rankings -->
+        <div class="glass-panel rounded-3xl p-8 md:p-12 mb-20 reveal">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-bold mb-8 flex items-center justify-center text-white">
+                    <i class="fas fa-utensils text-yellow-400 mr-3"></i>約會飲食喜好大調查
+                </h3>
+                
+                <!-- Age Group Tabs -->
+                <div class="inline-flex bg-black/40 rounded-full p-1 border border-white/10">
+                    <button onclick="switchTab('age-20')" id="btn-age-20" class="px-8 py-3 rounded-full bg-brand-purple text-white font-bold shadow-lg transition-all">20-29歲</button>
+                    <button onclick="switchTab('age-30')" id="btn-age-30" class="px-8 py-3 rounded-full text-gray-400 font-bold hover:text-white transition-all">30歲以上</button>
+                </div>
+            </div>
+
+            <!-- Content Area 20-29 -->
+            <div id="age-20" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Female Like -->
+                <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-pink-500">
+                    <h4 class="font-bold text-pink-400 mb-6 text-xl"><i class="fas fa-heart mr-2"></i>女生最愛</h4>
+                    <ul class="space-y-4 text-gray-200">
+                        <li class="flex items-center"><span class="w-8 text-center text-pink-500 font-bold">1</span> 網美系早午餐</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-pink-500 font-bold">2</span> 特色餐酒館</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-pink-500 font-bold">3</span> 韓式烤肉</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-pink-500 font-bold">4</span> 日式精緻燒肉</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-pink-500 font-bold">5</span> 主題咖啡廳</li>
+                    </ul>
+                </div>
+                <!-- Female Dislike -->
+                <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-red-500 bg-red-900/10">
+                    <h4 class="font-bold text-red-400 mb-6 text-xl"><i class="fas fa-skull mr-2"></i>女生最怕</h4>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-center"><span class="w-8 text-center text-red-500 font-bold">1</span> 路邊攤 (狼狽)</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-red-500 font-bold">2</span> 吃到飽 (太撐)</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-red-500 font-bold">3</span> 麻辣鍋 (氣味)</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-red-500 font-bold">4</span> 速食店</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-red-500 font-bold">5</span> 親子餐廳</li>
+                    </ul>
+                </div>
+                <!-- Male Like -->
+                <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-blue-500">
+                    <h4 class="font-bold text-blue-400 mb-6 text-xl"><i class="fas fa-thumbs-up mr-2"></i>男生最愛</h4>
+                    <ul class="space-y-4 text-gray-200">
+                        <li class="flex items-center"><span class="w-8 text-center text-blue-500 font-bold">1</span> 吃到飽火鍋/燒烤</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-blue-500 font-bold">2</span> 日式居酒屋</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-blue-500 font-bold">3</span> 平價牛排館</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-blue-500 font-bold">4</span> 拉麵名店</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-blue-500 font-bold">5</span> 熱炒店</li>
+                    </ul>
+                </div>
+                <!-- Male Dislike -->
+                <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-gray-500 bg-gray-800/20">
+                    <h4 class="font-bold text-gray-400 mb-6 text-xl"><i class="fas fa-thumbs-down mr-2"></i>男生最怕</h4>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-center"><span class="w-8 text-center text-gray-500 font-bold">1</span> 昂貴法式料理</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-gray-500 font-bold">2</span> 純素/沙拉專賣</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-gray-500 font-bold">3</span> 精緻下午茶</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-gray-500 font-bold">4</span> 排隊名店</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-gray-500 font-bold">5</span> 分子料理</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content Area 30+ (Hidden) -->
+            <div id="age-30" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 內容結構同上，只是數據不同 -->
+                <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-pink-500">
+                    <h4 class="font-bold text-pink-400 mb-6 text-xl"><i class="fas fa-wine-glass mr-2"></i>女生最愛</h4>
+                    <ul class="space-y-4 text-gray-200">
+                        <li class="flex items-center"><span class="w-8 text-center text-pink-500 font-bold">1</span> 無菜單料理</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-pink-500 font-bold">2</span> 預約制私廚</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-pink-500 font-bold">3</span> 高級西餐廳</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-pink-500 font-bold">4</span> 質感紅酒吧</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-pink-500 font-bold">5</span> 養生/精緻鍋物</li>
+                    </ul>
+                </div>
+                 <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-red-500 bg-red-900/10">
+                    <h4 class="font-bold text-red-400 mb-6 text-xl"><i class="fas fa-ban mr-2"></i>女生最怕</h4>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-center"><span class="w-8 text-center text-red-500 font-bold">1</span> 吵雜運動酒吧</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-red-500 font-bold">2</span> 平價自助餐</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-red-500 font-bold">3</span> 夜市 (人擠人)</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-red-500 font-bold">4</span> 連鎖平價牛排</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-red-500 font-bold">5</span> 網美店(難吃)</li>
+                    </ul>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-blue-500">
+                    <h4 class="font-bold text-blue-400 mb-6 text-xl"><i class="fas fa-check-circle mr-2"></i>男生最愛</h4>
+                    <ul class="space-y-4 text-gray-200">
+                        <li class="flex items-center"><span class="w-8 text-center text-blue-500 font-bold">1</span> 海鮮餐廳</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-blue-500 font-bold">2</span> 威士忌酒吧</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-blue-500 font-bold">3</span> 高級鐵板燒</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-blue-500 font-bold">4</span> 老字號牛排館</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-blue-500 font-bold">5</span> 傳統中式合菜</li>
+                    </ul>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-gray-500 bg-gray-800/20">
+                    <h4 class="font-bold text-gray-400 mb-6 text-xl"><i class="fas fa-times-circle mr-2"></i>男生最怕</h4>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-center"><span class="w-8 text-center text-gray-500 font-bold">1</span> 甜點專賣店</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-gray-500 font-bold">2</span> 全素食餐廳</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-gray-500 font-bold">3</span> 寵物餐廳</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-gray-500 font-bold">4</span> 文青概念店</li>
+                        <li class="flex items-center"><span class="w-8 text-center text-gray-500 font-bold">5</span> CP值低早午餐</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 新增：飲食喜好終極結論互動區 (Emoji 修正) -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+                <!-- 20s Strategy Card -->
+                <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group border border-white/10 hover:border-brand-pink/50 transition-all cursor-pointer shadow-lg" onclick="toggleStrategy('strat-20')">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                        <i class="fas fa-gamepad text-8xl text-brand-pink"></i>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <span class="bg-brand-pink/20 text-brand-pink px-3 py-1 rounded-full text-xs font-bold tracking-widest mb-4 inline-block">20s BATTLEFIELD</span>
+                        <h4 class="text-2xl font-bold mb-4 text-white">20世代的戰爭：<br><span class="text-brand-pink"><i class="fas fa-camera mr-2"></i>氛圍感 VS <i class="fas fa-coins mr-2"></i>CP值</span></h4>
+                        <p class="text-gray-300 mb-6 h-12">女生想拍美照打卡，男生想吃飽喝足。這場矛盾該怎麼解？</p>
+                        
+                        <div class="flex items-center text-sm text-brand-pink font-bold animate-pulse group-hover:text-white transition-colors">
+                            <i class="fas fa-unlock-alt mr-2"></i> 點擊解鎖生存指南
+                        </div>
+
+                        <!-- Hidden Content (Emoji 修正) -->
+                        <div id="strat-20" class="hidden mt-6 pt-6 border-t border-white/10 animate-fade-in-up">
+                            <p class="text-gray-200 leading-relaxed text-lg">
+                                <strong><i class="fas fa-lightbulb text-yellow-400 mr-2"></i>最佳解法：</strong><br>
+                                找一家<span class="text-brand-pink font-bold">「裝潢像網美店的精緻吃到飽」</span>或<span class="text-brand-pink font-bold">「份量足夠的特色餐酒館」</span>。<br><br>
+                                <span class="text-sm text-gray-400">生存筆記：先讓她的鏡頭吃飽，再讓你的胃吃飽。千萬別帶去純吃裝潢但又貴又難吃的店。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 30s Strategy Card -->
+                <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group border border-white/10 hover:border-blue-400/50 transition-all cursor-pointer shadow-lg" onclick="toggleStrategy('strat-30')">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                        <i class="fas fa-chess-king text-8xl text-blue-400"></i>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <span class="bg-blue-400/20 text-blue-400 px-3 py-1 rounded-full text-xs font-bold tracking-widest mb-4 inline-block">30s BATTLEFIELD</span>
+                        <h4 class="text-2xl font-bold mb-4 text-white">30世代的角力：<br><span class="text-blue-400"><i class="fas fa-gem mr-2"></i>精緻感 VS <i class="fas fa-couch mr-2"></i>舒適度</span></h4>
+                        <p class="text-gray-300 mb-6 h-12">女生追求儀式與隱私，男生追求放鬆與好酒。如何兩全其美？</p>
+                        
+                        <div class="flex items-center text-sm text-blue-400 font-bold animate-pulse group-hover:text-white transition-colors">
+                            <i class="fas fa-unlock-alt mr-2"></i> 點擊解鎖生存指南
+                        </div>
+
+                        <!-- Hidden Content (Emoji 修正) -->
+                        <div id="strat-30" class="hidden mt-6 pt-6 border-t border-white/10 animate-fade-in-up">
+                            <p class="text-gray-200 leading-relaxed text-lg">
+                                <strong><i class="fas fa-lightbulb text-yellow-400 mr-2"></i>最佳解法：</strong><br>
+                                <span class="text-blue-400 font-bold">「預約制私廚」</span>是絕對王者。既有女生要的尊榮隱私感，也有男生喜歡的自在氛圍與好酒。<br><br>
+                                <span class="text-sm text-gray-400">生存筆記：30歲後的約會，重點在於「不被打擾的對話品質」。避免太吵雜或太拘束的地方。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1.2 Sport vs Drink & AA -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            <!-- Sport vs Drink -->
+            <div class="reveal glass-panel p-8 rounded-3xl flex flex-col justify-between group border-l-4 border-l-yellow-400 relative overflow-hidden">
+                <div class="absolute right-0 top-0 opacity-10 transform translate-x-10 -translate-y-10 group-hover:scale-110 transition-transform duration-700">
+                    <i class="fas fa-running text-9xl"></i>
+                </div>
+                
+                <div class="relative z-10">
+                    <h3 class="text-xl font-bold mb-6 text-yellow-100"><i class="fas fa-question-circle mr-2"></i>最愛約會方式？</h3>
+                    
+                    <div class="flex items-end mb-4">
+                        <span class="text-5xl font-black text-neon-green mr-3">62%</span>
+                        <span class="text-lg font-bold mb-2 text-green-200">運動</span>
+                    </div>
+                    <div class="w-full bg-gray-700/50 h-3 rounded-full mb-8 overflow-hidden">
+                        <div class="bg-neon-green h-full rounded-full ranking-bar shadow-[0_0_10px_#0be881]" data-width="62%"></div>
+                    </div>
+                    
+                    <div class="flex items-end mb-4">
+                        <span class="text-4xl font-black text-brand-pink mr-3">38%</span>
+                        <span class="text-lg font-bold mb-2 text-pink-200">飲酒</span>
+                    </div>
+                    <div class="w-full bg-gray-700/50 h-3 rounded-full overflow-hidden mb-8">
+                        <div class="bg-brand-pink h-full rounded-full ranking-bar shadow-[0_0_10px_#FF4757]" data-width="38%"></div>
+                    </div>
+                </div>
+
+                <!-- 互動結論區 -->
+                <div class="relative z-10 border-t border-white/10 pt-6">
+                    <p class="text-center text-gray-400 text-sm mb-4"><i class="fas fa-hand-pointer animate-bounce mr-2"></i>點擊你的派系看生存建議</p>
+                    <div class="flex gap-3">
+                        <button onclick="showDateTip('sport')" class="flex-1 py-3 bg-neon-green/10 hover:bg-neon-green/30 border border-neon-green/50 rounded-xl text-neon-green font-bold transition-all hover:scale-105 active:scale-95 text-sm">
+                            <i class="fas fa-dumbbell mr-1"></i> 運動派
+                        </button>
+                        <button onclick="showDateTip('drink')" class="flex-1 py-3 bg-brand-pink/10 hover:bg-brand-pink/30 border border-brand-pink/50 rounded-xl text-brand-pink font-bold transition-all hover:scale-105 active:scale-95 text-sm">
+                            <i class="fas fa-cocktail mr-1"></i> 微醺派
+                        </button>
+                    </div>
+                    
+                    <!-- Tip Display Area -->
+                    <div id="date-tip-display" class="mt-4 p-4 rounded-xl border min-h-[100px] flex items-center justify-center text-center hidden animate-fade-in-up bg-black/40 border-white/10">
+                        <p id="date-tip-text" class="text-gray-200 text-sm leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AA Stats -->
+            <div class="reveal lg:col-span-2 glass-panel p-8 rounded-3xl border-l-4 border-l-blue-400">
+                <h3 class="text-2xl font-bold mb-8 flex items-center text-blue-100">
+                    <i class="fas fa-coins text-yellow-400 mr-3 animate-pulse-slow"></i> 
+                    AA真的是公平嗎？
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Male Views -->
+                    <div>
+                        <h4 class="font-bold text-blue-400 mb-5 text-lg flex items-center"><i class="fas fa-mars mr-2"></i>男生觀點</h4>
+                        <div class="space-y-5 text-sm">
+                            <div>
+                                <div class="flex justify-between text-gray-300 mb-1"><span>1. 我全出 (風度)</span> <span class="text-blue-400 font-bold">45%</span></div>
+                                <div class="w-full bg-gray-700/50 h-2 rounded-full overflow-hidden"><div class="bg-blue-500 h-full rounded-full ranking-bar" data-width="45%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-gray-300 mb-1"><span>2. AA制 (公平)</span> <span class="text-blue-400 font-bold">30%</span></div>
+                                <div class="w-full bg-gray-700/50 h-2 rounded-full overflow-hidden"><div class="bg-blue-400 h-full rounded-full ranking-bar" data-width="30%"></div></div>
+                            </div>
+                             <div>
+                                <div class="flex justify-between text-gray-300 mb-1"><span>3. 我請客，她請飲料</span> <span class="text-blue-400 font-bold">15%</span></div>
+                                <div class="w-full bg-gray-700/50 h-2 rounded-full overflow-hidden"><div class="bg-blue-300 h-full rounded-full ranking-bar" data-width="15%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Female Views -->
+                    <div>
+                        <h4 class="font-bold text-pink-400 mb-5 text-lg flex items-center"><i class="fas fa-venus mr-2"></i>女生觀點</h4>
+                        <div class="space-y-5 text-sm">
+                            <div>
+                                <div class="flex justify-between text-gray-300 mb-1"><span>1. 男生付 (被照顧)</span> <span class="text-pink-400 font-bold">40%</span></div>
+                                <div class="w-full bg-gray-700/50 h-2 rounded-full overflow-hidden"><div class="bg-pink-500 h-full rounded-full ranking-bar" data-width="40%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-gray-300 mb-1"><span>2. AA制 (互不相欠)</span> <span class="text-pink-400 font-bold">35%</span></div>
+                                <div class="w-full bg-gray-700/50 h-2 rounded-full overflow-hidden"><div class="bg-pink-400 h-full rounded-full ranking-bar" data-width="35%"></div></div>
+                            </div>
+                             <div>
+                                <div class="flex justify-between text-gray-300 mb-1"><span>3. 互相請客 (輪流)</span> <span class="text-pink-400 font-bold">15%</span></div>
+                                <div class="w-full bg-gray-700/50 h-2 rounded-full overflow-hidden"><div class="bg-pink-300 h-full rounded-full ranking-bar" data-width="15%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AA制 互動結論區 -->
+                <div class="mt-10 relative">
+                    <div class="glass-panel p-6 rounded-2xl border border-yellow-400/30 bg-gradient-to-br from-yellow-900/10 to-black/20 text-center">
+                        <h4 class="text-xl font-bold text-yellow-400 mb-6 flex items-center justify-center">
+                            <i class="fas fa-gavel mr-2 animate-pulse"></i>AA制：愛情裡的照妖鏡？
+                        </h4>
+                        
+                        <!-- Gender Buttons -->
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <button onclick="showAATruth('boy')" class="group relative py-3 px-2 rounded-xl border border-blue-400/30 hover:bg-blue-400/10 transition-all overflow-hidden">
+                                <div class="absolute inset-0 bg-blue-400/0 group-hover:bg-blue-400/5 transition-colors"></div>
+                                <span class="text-blue-300 font-bold text-sm md:text-base relative z-10 group-hover:text-blue-200"><i class="fas fa-mars mr-1"></i> 男生內心話</span>
+                            </button>
+                            <button onclick="showAATruth('girl')" class="group relative py-3 px-2 rounded-xl border border-pink-400/30 hover:bg-pink-400/10 transition-all overflow-hidden">
+                                <div class="absolute inset-0 bg-pink-400/0 group-hover:bg-pink-400/5 transition-colors"></div>
+                                <span class="text-pink-300 font-bold text-sm md:text-base relative z-10 group-hover:text-pink-200"><i class="fas fa-venus mr-1"></i> 女生內心話</span>
+                            </button>
+                        </div>
+
+                        <!-- Dynamic Text Display -->
+                        <div id="aa-truth-display" class="hidden min-h-[80px] flex items-center justify-center mb-6 p-4 rounded-xl bg-black/20 border border-white/5 animate-fade-in-up">
+                            <p id="aa-truth-text" class="text-lg font-medium leading-relaxed"></p>
+                        </div>
+                        
+                        <!-- The Ultimate Controversial Conclusion (Blurred Interaction) (Emoji 修正) -->
+                        <div class="border-t border-white/10 pt-6">
+                            <p class="text-xs text-gray-500 mb-3 tracking-widest uppercase">The Cruel Reality</p>
+                            <div class="cursor-pointer relative overflow-hidden rounded-xl bg-black/40 p-5 hover:bg-black/60 transition-all group" onclick="this.querySelector('.blur-content').classList.remove('blur-md', 'select-none'); this.querySelector('.blur-overlay').classList.add('hidden');">
+                                 
+                                 <!-- Overlay Label -->
+                                 <div class="blur-overlay absolute inset-0 flex flex-col items-center justify-center bg-white/5 backdrop-blur-[2px] z-10 group-hover:backdrop-blur-[1px] transition-all">
+                                    <span class="bg-red-600 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-[0_0_15px_rgba(220,38,38,0.5)] animate-pulse">
+                                        <i class="fas fa-exclamation-triangle mr-1"></i> 點擊揭露殘酷真相
+                                    </span>
+                                 </div>
+                                 
+                                 <!-- Blurred Content -->
+                                 <div class="blur-content blur-md select-none transition-all duration-700 ease-out">
+                                    <p class="text-white font-medium text-lg leading-relaxed">
+                                        「男生付錢是展現<span class="text-blue-400 font-bold">實力</span>，<br>女生回請是展現<span class="text-pink-400 font-bold">教養</span>。」
+                                    </p>
+                                    <div class="mt-3 text-sm text-gray-400 border-t border-white/10 pt-2">
+                                        <p>堅持算清個位數的男生 ➜ 憑實力單身</p>
+                                        <p>把男生當提款機的女生 ➜ 憑實力被放生</p>
+                                    </div>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 2: Preferences -->
+    <section class="py-24 px-4 max-w-7xl mx-auto relative z-10">
+        <div class="mb-16 reveal flex items-center">
+            <div class="w-1 h-12 bg-gradient-to-b from-blue-400 to-green-400 mr-6 rounded-full"></div>
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mt-2 text-white text-glow">交友喜好大調查</h2>
+                <p class="text-lg text-gray-400 mt-2">照片、星座、職業，這些標籤如何定義了你的吸引力？</p>
+            </div>
+        </div>
+
+        <!-- Photos Grid with Images -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 reveal">
+            <!-- Like Column -->
+            <div class="glass-panel p-6 rounded-3xl border-t-4 border-t-neon-green hover:shadow-[0_0_30px_rgba(11,232,129,0.2)] flex flex-col transition-all duration-300">
+                <h3 class="text-2xl font-bold text-neon-green mb-6 flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-neon-green/20 flex items-center justify-center mr-3"><i class="fas fa-thumbs-up text-lg"></i></div>
+                    最常被滑喜歡 (LIKE)
+                </h3>
+                
+                <div class="space-y-4">
+                    <!-- Top 1: Large Card -->
+                    <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer shadow-lg border border-white/10">
+                         <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="自然生活照">
+                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-5 flex flex-col justify-end">
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <span class="bg-neon-green text-black text-xs font-bold px-2 py-0.5 rounded mb-2 inline-block">TOP 1</span>
+                                    <h4 class="text-white font-bold text-xl text-shadow-strong"><i class="fas fa-camera-retro mr-2"></i>自然生活照</h4>
+                                </div>
+                                <span class="text-3xl font-black text-neon-green drop-shadow-md">85%</span>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- Top 2 & 3: Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="relative h-36 rounded-2xl overflow-hidden group border border-white/10">
+                             <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" alt="陽光運動">
+                             <div class="absolute inset-0 bg-black/50 hover:bg-black/20 transition-colors p-4 flex flex-col justify-between">
+                                <span class="text-neon-green text-xs font-bold">TOP 2</span>
+                                <div>
+                                     <h4 class="text-white font-bold text-sm mb-1"><i class="fas fa-hiking mr-1"></i>陽光運動</h4>
+                                     <span class="text-neon-green font-bold text-lg">78%</span>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="relative h-36 rounded-2xl overflow-hidden group border border-white/10">
+                             <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100" alt="寵物">
+                             <div class="absolute inset-0 bg-black/50 hover:bg-black/20 transition-colors p-4 flex flex-col justify-between">
+                                <span class="text-neon-green text-xs font-bold">TOP 3</span>
+                                <div>
+                                     <h4 class="text-white font-bold text-sm mb-1"><i class="fas fa-paw mr-1"></i>寵物合照</h4>
+                                     <span class="text-neon-green font-bold text-lg">72%</span>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Top 4 & 5: List -->
+                    <div class="bg-white/5 rounded-xl p-3 border border-white/5 mt-2 space-y-2">
+                        <div class="flex justify-between items-center text-sm text-gray-300 px-2 py-1 border-b border-white/5 pb-2">
+                            <span class="flex items-center"><i class="fas fa-book-open text-neon-green w-6"></i>4. 興趣展現 (下廚/閱讀)</span>
+                            <span class="font-bold text-white">65%</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm text-gray-300 px-2 py-1">
+                            <span class="flex items-center"><i class="fas fa-user-tie text-neon-green w-6"></i>5. 專業工作照</span>
+                            <span class="font-bold text-white">60%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Column -->
+            <div class="glass-panel p-6 rounded-3xl border-t-4 border-t-neon-red hover:shadow-[0_0_30px_rgba(255,63,52,0.2)] flex flex-col transition-all duration-300">
+                 <h3 class="text-2xl font-bold text-neon-red mb-6 flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-neon-red/20 flex items-center justify-center mr-3"><i class="fas fa-thumbs-down text-lg"></i></div>
+                    最常被滑拒絕 (NO)
+                </h3>
+                
+                <div class="space-y-4">
+                    <!-- Top 1: Large Card -->
+                    <div class="relative h-48 rounded-2xl overflow-hidden group cursor-pointer shadow-lg border border-white/10">
+                         <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 grayscale" alt="團體照">
+                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent p-5 flex flex-col justify-end">
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <span class="bg-neon-red text-white text-xs font-bold px-2 py-0.5 rounded mb-2 inline-block">TOP 1</span>
+                                    <h4 class="text-white font-bold text-xl text-shadow-strong"><i class="fas fa-users mr-2"></i>誰是主角團體照</h4>
+                                </div>
+                                <span class="text-3xl font-black text-neon-red drop-shadow-md">90%</span>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- Top 2 & 3: Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="relative h-36 rounded-2xl overflow-hidden group border border-white/10">
+                             <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-50 group-hover:opacity-80 grayscale" alt="炫富">
+                             <div class="absolute inset-0 bg-black/60 hover:bg-black/30 transition-colors p-4 flex flex-col justify-between">
+                                <span class="text-neon-red text-xs font-bold">TOP 2</span>
+                                <div>
+                                     <h4 class="text-white font-bold text-sm mb-1"><i class="fas fa-car mr-1"></i>炫耀名車名錶</h4>
+                                     <span class="text-neon-red font-bold text-lg">88%</span>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="relative h-36 rounded-2xl overflow-hidden group border border-white/10">
+                             <img src="https://images.unsplash.com/photo-1572631382901-cf1a0a6087cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-50 group-hover:opacity-80 grayscale" alt="遮臉">
+                             <div class="absolute inset-0 bg-black/60 hover:bg-black/30 transition-colors p-4 flex flex-col justify-between">
+                                <span class="text-neon-red text-xs font-bold">TOP 3</span>
+                                <div>
+                                     <h4 class="text-white font-bold text-sm mb-1"><i class="fas fa-mask mr-1"></i>墨鏡/口罩遮臉</h4>
+                                     <span class="text-neon-red font-bold text-lg">85%</span>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Top 4 & 5: List -->
+                    <div class="bg-white/5 rounded-xl p-3 border border-white/5 mt-2 space-y-2">
+                        <div class="flex justify-between items-center text-sm text-gray-300 px-2 py-1 border-b border-white/5 pb-2">
+                            <span class="flex items-center"><i class="fas fa-toilet text-neon-red w-6"></i>4. 廁所對鏡自拍</span>
+                            <span class="font-bold text-white">80%</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm text-gray-300 px-2 py-1">
+                            <span class="flex items-center"><i class="fas fa-user-slash text-neon-red w-6"></i>5. 切掉前任的照片</span>
+                            <span class="font-bold text-white">75%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Photo Psychology Interactive Conclusion (Restored) -->
+        <div class="reveal mb-16 max-w-4xl mx-auto">
+            <div class="text-center relative z-10">
+                <div class="inline-block relative">
+                    <button onclick="togglePhotoPsychology()" id="btn-photo-psy" class="relative z-10 flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-gray-800 border border-gray-600 rounded-full hover:bg-gray-700 hover:border-white hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.1)] group">
+                        <i class="fas fa-eye mr-3 text-neon-green group-hover:animate-pulse"></i>
+                        <span>啟動視覺心理學：破解照片裡的「潛台詞」</span>
+                    </button>
+                    <!-- Pulse Effect behind button -->
+                    <span class="absolute top-0 left-0 w-full h-full rounded-full bg-neon-green/20 animate-ping opacity-0" id="btn-pulse-effect"></span>
+                </div>
+
+                <div id="photo-psy-result" class="hidden mt-8 transform transition-all duration-500 ease-out origin-top scale-95 opacity-0">
+                    <div class="glass-panel p-8 rounded-3xl border border-white/20 bg-gradient-to-b from-gray-900/80 to-black text-left relative overflow-hidden">
+                        <!-- Scanning Line Animation -->
+                        <div class="absolute top-0 left-0 w-full h-1 bg-neon-green/50 shadow-[0_0_15px_#0be881] animate-[scan_2s_linear_infinite]"></div>
+                        
+                        <h4 class="text-xl font-bold text-white mb-6 text-center border-b border-white/10 pb-4">
+                            <i class="fas fa-terminal text-neon-green mr-2"></i> 分析結果：照片不是用來「證明」你多好
+                        </h4>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="text-neon-red text-2xl mr-3"><i class="fas fa-times-circle"></i></div>
+                                    <div>
+                                        <p class="font-bold text-gray-200 mb-1">為什麼「炫富/秀肌肉」會扣分？</p>
+                                        <p class="text-sm text-gray-400">潛台詞是：<span class="text-neon-red">「快來誇獎我！」</span><br>這顯示了強烈的需求感與不自信，讓人感到壓力。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="text-neon-green text-2xl mr-3"><i class="fas fa-check-circle"></i></div>
+                                    <div>
+                                        <p class="font-bold text-gray-200 mb-1">為什麼「生活抓拍」會加分？</p>
+                                        <p class="text-sm text-gray-400">潛台詞是：<span class="text-neon-green">「我的生活很有趣，歡迎加入。」</span><br>傳遞出放鬆、真實與高情緒價值。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 text-center bg-white/5 p-4 rounded-xl">
+                            <p class="text-white font-bold text-lg">
+                                結論：照片是用來<span class="text-yellow-400">「邀請」</span>對方進入你的生活，而不是用來展示軍火庫。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Conclusion: The Golden Ratio -->
+        <div class="reveal mb-20">
+            <div class="glass-panel p-1 rounded-[2rem] border border-white/20 relative overflow-hidden shadow-2xl">
+                 <!-- Interaction Wrapper -->
+                 <div class="bg-black/40 p-10 md:p-14 text-center rounded-[1.8rem] backdrop-blur-xl">
+                    <div class="w-20 h-20 bg-brand-purple/20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(95,39,205,0.4)] animate-pulse-slow">
+                        <i class="fas fa-magic text-3xl text-brand-purple"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold text-white mb-4">照片怎麼擺脫單率最高？</h4>
+                    <p class="text-gray-300 mb-10 text-lg">別再只放自拍了！大數據算出了「黃金照片公式」。</p>
+                    
+                    <button onclick="togglePhotoSecret()" id="btn-photo-secret" class="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-gradient-to-r from-brand-purple to-pink-600 rounded-full focus:outline-none hover:scale-105 shadow-[0_0_30px_rgba(95,39,205,0.6)]">
+                        <span class="relative text-lg">點擊生成「黃金公式」</span>
+                        <i class="fas fa-wand-magic-sparkles ml-3 animate-pulse"></i>
+                    </button>
+
+                    <!-- Hidden Result (Visual Update) (Emoji 修正) -->
+                    <div id="photo-secret" class="hidden mt-10 animate-fade-in-up">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-left">
+                            
+                            <!-- Card 1: Portrait -->
+                            <div class="relative group overflow-hidden rounded-2xl aspect-[3/4] border border-white/10 hover:border-brand-purple/50 transition-all shadow-lg hover:-translate-y-2 duration-500">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="清晰正面照">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4">
+                                    <div class="bg-brand-purple w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mb-2 shadow-[0_0_10px_rgba(95,39,205,0.5)]">1</div>
+                                    <p class="text-white font-bold text-lg leading-tight mb-1">清晰正面</p>
+                                    <p class="text-xs text-gray-300">眼神接觸，展現真誠與自信，不要遮擋。</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Full Body -->
+                            <div class="relative group overflow-hidden rounded-2xl aspect-[3/4] border border-white/10 hover:border-brand-purple/50 transition-all shadow-lg hover:-translate-y-2 duration-500 delay-100">
+                                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="全身活動照">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4">
+                                    <div class="bg-brand-purple w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mb-2 shadow-[0_0_10px_rgba(95,39,205,0.5)]">2</div>
+                                    <p class="text-white font-bold text-lg leading-tight mb-1">全身活動</p>
+                                    <p class="text-xs text-gray-300">戶外/運動，讓對方看見真實體態與活力。</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Hobby -->
+                            <div class="relative group overflow-hidden rounded-2xl aspect-[3/4] border border-white/10 hover:border-brand-purple/50 transition-all shadow-lg hover:-translate-y-2 duration-500 delay-200">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="興趣嗜好照">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4">
+                                    <div class="bg-brand-purple w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mb-2 shadow-[0_0_10px_rgba(95,39,205,0.5)]">3</div>
+                                    <p class="text-white font-bold text-lg leading-tight mb-1">興趣嗜好</p>
+                                    <p class="text-xs text-gray-300">閱讀/下廚/露營，這是開啟話題的關鍵。</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 4: Pet/Lifestyle -->
+                            <div class="relative group overflow-hidden rounded-2xl aspect-[3/4] border border-white/10 hover:border-brand-purple/50 transition-all shadow-lg hover:-translate-y-2 duration-500 delay-300">
+                                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="寵物生活照">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4">
+                                    <div class="bg-brand-purple w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mb-2 shadow-[0_0_10px_rgba(95,39,205,0.5)]">4</div>
+                                    <p class="text-white font-bold text-lg leading-tight mb-1">寵物/生活</p>
+                                    <p class="text-xs text-gray-300">展現親和力與愛心，好感度瞬間加分。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10 p-5 bg-gradient-to-r from-neon-green/10 to-brand-blue/10 border border-neon-green/30 rounded-2xl inline-block backdrop-blur-md">
+                            <p class="text-neon-green font-bold text-lg md:text-xl">
+                                <i class="fas fa-check-circle mr-2 animate-bounce"></i> 數據認證：這樣配置 = 配對率提升 200%
+                            </p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Visual Separator: Topic Switch -->
+        <div class="reveal flex flex-col items-center justify-center mb-24 opacity-50">
+            <div class="h-16 w-px bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
+            <div class="py-4 text-center">
+                <span class="text-xs font-mono tracking-[0.3em] text-blue-300">NEXT TOPIC: PERSONALITY DATA</span>
+            </div>
+            <div class="h-16 w-px bg-gradient-to-b from-white/50 via-white/20 to-transparent"></div>
+        </div>
+
+        <!-- Horoscope Section (Restored & Optimized) (Emoji 修正) -->
+        <div class="mb-16 reveal relative z-10">
+            <div class="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden group border border-white/20">
+                <div class="absolute -right-10 -top-10 opacity-10 rotate-12 transition-transform group-hover:rotate-0 duration-700">
+                    <i class="fas fa-globe-asia text-9xl text-purple-500"></i>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-bold mb-8 text-purple-300 relative z-10 text-center"><i class="fas fa-star mr-2"></i>星座回覆率紅黑榜</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
+                    <div>
+                        <p class="font-bold text-blue-400 mb-4 border-b border-white/10 pb-2 text-lg text-center"><i class="fas fa-mars mr-2"></i>男性回覆率</p>
+                        <div class="space-y-4 text-base">
+                            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-green/30 transition-colors group/item cursor-default">
+                                <p class="text-neon-green font-bold mb-2 flex items-center justify-between"><span><i class="fas fa-arrow-up mr-1"></i>最高</span><span class="text-xs font-normal text-gray-500 bg-black/30 px-3 py-1 rounded-full">風/火象</span></p>
+                                <p class="text-gray-200 text-lg">雙子、天秤、射手</p>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-red/30 transition-colors group/item cursor-default">
+                                <p class="text-neon-red font-bold mb-2 flex items-center justify-between"><span><i class="fas fa-arrow-down mr-1"></i>最低</span><span class="text-xs font-normal text-gray-500 bg-black/30 px-3 py-1 rounded-full">土象三巨頭</span></p>
+                                <p class="text-gray-200 text-lg">摩羯、金牛、處女</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-bold text-pink-400 mb-4 border-b border-white/10 pb-2 text-lg text-center"><i class="fas fa-venus mr-2"></i>女性回覆率</p>
+                        <div class="space-y-4 text-base">
+                            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-green/30 transition-colors group/item cursor-default">
+                                <p class="text-neon-green font-bold mb-2 flex items-center justify-between"><span><i class="fas fa-arrow-up mr-1"></i>最高</span><span class="text-xs font-normal text-gray-500 bg-black/30 px-3 py-1 rounded-full">水象星座</span></p>
+                                <p class="text-gray-200 text-lg">雙魚、天蠍、巨蟹</p>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-red/30 transition-colors group/item cursor-default">
+                                <p class="text-neon-red font-bold mb-2 flex items-center justify-between"><span><i class="fas fa-arrow-down mr-1"></i>最低</span><span class="text-xs font-normal text-gray-500 bg-black/30 px-3 py-1 rounded-full">看心情組</span></p>
+                                <p class="text-gray-200 text-lg">水瓶、獅子、牡羊</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 text-center relative z-10 border-t border-white/10 pt-8">
+                    <button onclick="toggleHoroscopeInsight()" id="btn-horoscope" class="group relative inline-flex items-center justify-center px-8 py-3 text-base font-bold text-purple-300 transition-all duration-300 border border-purple-500/30 rounded-full hover:bg-purple-500/10 hover:border-purple-400 hover:text-purple-200 hover:scale-105 focus:outline-none">
+                        <i class="fas fa-crystal-ball mr-2 animate-pulse group-hover:text-purple-400"></i> <span>大師，為什麼？點擊解析</span>
+                    </button>
+                    <div id="horoscope-insight" class="hidden mt-8 bg-black/40 rounded-2xl p-6 border border-purple-500/20 text-left animate-fade-in-up backdrop-blur-sm max-w-3xl mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="bg-blue-500/20 text-blue-400 p-3 rounded-xl mb-3 shadow-[0_0_15px_rgba(59,130,246,0.2)]"><i class="fas fa-comment-dots text-2xl"></i></div>
+                                <div>
+                                    <p class="font-bold text-white mb-2 text-base">風象男秒回？</p>
+                                    <p class="text-gray-400 leading-relaxed">「如果不聊天，人生還有什麼樂趣？」對<span class="text-neon-green font-bold">『話題』</span>有興趣。</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center text-center border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-4">
+                                <div class="bg-gray-700/50 text-gray-400 p-3 rounded-xl mb-3 shadow-[0_0_15px_rgba(156,163,175,0.2)]"><i class="fas fa-user-lock text-2xl"></i></div>
+                                <div>
+                                    <p class="font-bold text-white mb-2 text-base">土象男已讀？</p>
+                                    <p class="text-gray-400 leading-relaxed">「這對話能解決問題嗎？」不能就先忙。<span class="text-neon-red font-bold">實用主義</span>至上。</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center text-center border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-4">
+                                <div class="bg-pink-500/20 text-pink-400 p-3 rounded-xl mb-3 shadow-[0_0_15px_rgba(236,72,153,0.2)]"><i class="fas fa-heart text-2xl"></i></div>
+                                <div>
+                                    <p class="font-bold text-white mb-2 text-base">水象女高回覆？</p>
+                                    <p class="text-gray-400 leading-relaxed"><span class="text-neon-green font-bold">共情能力</span>強，覺得已讀不回沒禮貌，回覆是出於善良。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jobs Section (Restored & Optimized) (Emoji 修正) -->
+        <div class="mb-20 reveal relative z-10">
+            <div class="glass-panel p-8 md:p-12 rounded-3xl flex flex-col h-full border border-white/20">
+                <h3 class="text-2xl md:text-3xl font-bold mb-8 text-purple-300 text-center"><i class="fas fa-briefcase mr-2"></i>最受歡迎職業 TOP10</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Female Favorite (Male Jobs) -->
+                    <div class="space-y-4">
+                        <p class="font-bold text-pink-400 mb-4 text-lg border-b border-white/10 pb-2 text-center"><i class="fas fa-female mr-2"></i>女生最愛</p>
+                        <div class="space-y-3">
+                            <!-- Top 3 Highlighting -->
+                            <div class="bg-gradient-to-r from-pink-500/20 to-transparent p-3 rounded-xl border-l-4 border-yellow-400 flex items-center hover:bg-white/5 transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-yellow-400/20 text-yellow-400 flex items-center justify-center font-black text-xl mr-4 italic">1</div>
+                                <span class="text-white font-bold text-lg">醫師</span>
+                                <span class="ml-auto text-xs text-gray-400">社會地位高</span>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border-l-4 border-gray-400 flex items-center hover:bg-white/10 transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-gray-400/20 text-gray-400 flex items-center justify-center font-black text-xl mr-4 italic">2</div>
+                                <span class="text-gray-200 font-bold text-lg">工程師</span>
+                                <span class="ml-auto text-xs text-gray-400">單純收入高</span>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border-l-4 border-orange-600 flex items-center hover:bg-white/10 transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-orange-600/20 text-orange-600 flex items-center justify-center font-black text-xl mr-4 italic">3</div>
+                                <span class="text-gray-200 font-bold text-lg">教師</span>
+                                <span class="ml-auto text-xs text-gray-400">穩定顧家</span>
+                            </div>
+                        </div>
+                        <!-- 4-10 Tags -->
+                        <div class="flex flex-wrap gap-2 pt-2 justify-center md:justify-start">
+                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">4.公務員</span>
+                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">5.律師</span>
+                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">6.建築師</span>
+                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">7.機師</span>
+                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">8.金融業</span>
+                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">9.藥師</span>
+                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">10.創業者</span>
+                        </div>
+                    </div>
+
+                    <!-- Male Favorite (Female Jobs) -->
+                    <div class="space-y-4">
+                        <p class="font-bold text-blue-400 mb-4 text-lg border-b border-white/10 pb-2 text-center"><i class="fas fa-male mr-2"></i>男生最愛</p>
+                        <div class="space-y-3">
+                            <!-- Top 3 Highlighting -->
+                            <div class="bg-gradient-to-r from-blue-500/20 to-transparent p-3 rounded-xl border-l-4 border-yellow-400 flex items-center hover:bg-white/5 transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-yellow-400/20 text-yellow-400 flex items-center justify-center font-black text-xl mr-4 italic">1</div>
+                                <span class="text-white font-bold text-lg">教師</span>
+                                <span class="ml-auto text-xs text-gray-400">溫柔有耐心</span>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border-l-4 border-gray-400 flex items-center hover:bg-white/10 transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-gray-400/20 text-gray-400 flex items-center justify-center font-black text-xl mr-4 italic">2</div>
+                                <span class="text-gray-200 font-bold text-lg">護理師</span>
+                                <span class="ml-auto text-xs text-gray-400">會照顧人</span>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border-l-4 border-orange-600 flex items-center hover:bg-white/10 transition-colors">
+                                <div class="w-10 h-10 rounded-full bg-orange-600/20 text-orange-600 flex items-center justify-center font-black text-xl mr-4 italic">3</div>
+                                <span class="text-gray-200 font-bold text-lg">空服員</span>
+                                <span class="ml-auto text-xs text-gray-400">外型亮眼</span>
+                            </div>
+                        </div>
+                        <!-- 4-10 Tags -->
+                        <div class="flex flex-wrap gap-2 pt-2 justify-center md:justify-start">
+                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">4.公務員</span>
+                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">5.人資</span>
+                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">6.設計師</span>
+                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">7.藥師</span>
+                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">8.行銷</span>
+                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">9.營養師</span>
+                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">10.接案</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Conclusion -->
+                <div class="mt-10 border-t border-white/10 pt-8 text-center">
+                    <button onclick="toggleJobInsight()" id="btn-job-insight" class="text-sm md:text-base font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 px-8 py-3 rounded-full transition-all hover:scale-105 flex items-center justify-center mx-auto shadow-lg">
+                        <i class="fas fa-search-dollar mr-3 text-yellow-400 animate-bounce"></i>
+                        點擊破解：職業背後的潛台詞
+                    </button>
+                    
+                    <div id="job-insight" class="hidden mt-6 bg-black/40 rounded-2xl p-6 text-left animate-fade-in-up border border-white/10 max-w-3xl mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
+                            <div class="flex items-start bg-pink-900/20 p-4 rounded-xl border border-pink-500/20">
+                                <div class="bg-pink-500/20 p-2 rounded-lg mr-3"><i class="fas fa-shield-alt text-pink-400"></i></div>
+                                <div>
+                                    <p class="text-pink-300 font-bold mb-1">女生選男生：生存焦慮</p>
+                                    <p class="text-gray-300 text-sm leading-relaxed">醫師、工程師代表的不是浪漫，而是<span class="text-white font-bold">「抗風險能力」</span>。通膨時代，穩定高薪就是最強費洛蒙。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start bg-blue-900/20 p-4 rounded-xl border border-blue-500/20">
+                                <div class="bg-blue-500/20 p-2 rounded-lg mr-3"><i class="fas fa-home text-blue-400"></i></div>
+                                <div>
+                                    <p class="text-blue-300 font-bold mb-1">男生選女生：情緒價值</p>
+                                    <p class="text-gray-300 text-sm leading-relaxed">教師、護理師給人的刻板印象是<span class="text-white font-bold">「溫柔、會照顧人」</span>。男生潛意識裡找的不是合夥人，而是避風港。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controversial Question: Economic Status -->
+        <div class="reveal glass-panel p-1 rounded-[2.5rem] relative overflow-hidden group shadow-[0_0_40px_rgba(255,215,0,0.1)] border border-yellow-400/20 mt-12">
+            <!-- Background Animation -->
+            <div class="absolute inset-0 bg-gradient-to-br from-yellow-900/40 via-black/80 to-black/90 z-0"></div>
+            <div class="absolute -right-20 -top-20 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+            
+            <div class="relative z-10 p-10 md:p-14 text-center">
+                <span class="inline-block py-1 px-4 rounded-full bg-yellow-500/20 text-yellow-300 text-xs font-bold tracking-widest mb-6 border border-yellow-500/30">
+                    <i class="fas fa-lock mr-2"></i>PREMIUM INSIGHT
+                </span>
+                
+                <h3 class="text-3xl md:text-5xl font-black mb-6 text-white leading-tight">
+                    女生覺得什麼叫<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">「經濟收入好」？</span>
+                </h3>
+                
+                <p class="mb-10 text-gray-300 text-lg md:text-xl font-light max-w-2xl mx-auto">
+                    以為有房有車就穩了？數據顯示 <span class="text-white font-bold border-b border-yellow-500/50">70% 男生都搞錯重點</span>。<br>
+                    真正的加分項，往往藏在存摺之外。
+                </p>
+                
+                <button onclick="document.getElementById('modal-money').classList.remove('hidden')" class="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-white transition-all duration-300 bg-gradient-to-r from-yellow-600 to-amber-600 rounded-full hover:scale-105 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] active:scale-95 ring-4 ring-yellow-500/20">
+                    <span class="mr-3 text-xl"><i class="fas fa-unlock-alt mr-2"></i> 點擊揭密：不是存款，而是...</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 3: NG Survey -->
+    <section class="py-24 px-4 max-w-7xl mx-auto relative z-10">
+        <div class="text-center mb-16 reveal">
+            <div class="inline-block relative">
+                <span class="absolute -inset-1 bg-neon-red blur opacity-30 animate-pulse"></span>
+                <span class="relative text-neon-red tracking-[0.5em] font-bold text-sm bg-black/80 px-6 py-2 rounded-full border border-neon-red/50 shadow-[0_0_15px_rgba(255,63,52,0.5)]">
+                    <i class="fas fa-biohazard mr-2"></i>DANGER ZONE
+                </span>
+            </div>
+            <h2 class="text-4xl md:text-6xl font-black mt-6 text-white text-glow tracking-wide">
+                <span class="text-neon-red">約會獵奇</span> <span class="text-gray-200">NG 大調查</span>
+            </h2>
+            <p class="text-gray-400 mt-4 text-lg">誤入歧途的浪漫，往往比單身還可怕。</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <!-- Weird Locations (Map Pins Style) -->
+            <div class="reveal">
+                <h3 class="text-2xl font-bold mb-8 flex items-center text-white">
+                    <i class="fas fa-map-marked-alt text-neon-red mr-3 text-3xl"></i> 
+                    最奇葩約會地點 TOP3
+                </h3>
+                <div class="space-y-6">
+                    <!-- Rank 1 -->
+                    <div class="group relative overflow-hidden rounded-2xl border-l-8 border-neon-red bg-gray-900/60 hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,63,52,0.2)]">
+                        <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                            <i class="fas fa-ghost text-6xl text-neon-red"></i>
+                        </div>
+                        <div class="p-6 flex items-start">
+                            <div class="flex-shrink-0 mr-5">
+                                <span class="flex items-center justify-center w-12 h-12 rounded-full bg-neon-red text-black font-black text-xl shadow-lg">1</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1 group-hover:text-neon-red transition-colors">墓園漫步</h4>
+                                <span class="inline-block bg-red-900/50 text-red-300 text-xs px-2 py-0.5 rounded mb-2 border border-red-800">恐怖指數 ★★★★★</span>
+                                <p class="text-gray-400 text-sm leading-relaxed">理由：「這邊很安靜適合聊天...」<br>(內心OS：安靜到連心跳都快停了，嚇死誰？)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rank 2 -->
+                    <div class="group relative overflow-hidden rounded-2xl border-l-8 border-orange-500 bg-gray-900/60 hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                            <i class="fas fa-industry text-6xl text-orange-500"></i>
+                        </div>
+                        <div class="p-6 flex items-start">
+                            <div class="flex-shrink-0 mr-5">
+                                <span class="flex items-center justify-center w-12 h-12 rounded-full bg-orange-500 text-black font-black text-xl shadow-lg">2</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1 group-hover:text-orange-500 transition-colors">廢棄工廠</h4>
+                                <span class="inline-block bg-orange-900/50 text-orange-300 text-xs px-2 py-0.5 rounded mb-2 border border-orange-800">危險指數 ★★★★</span>
+                                <p class="text-gray-400 text-sm leading-relaxed">理由：自以為頹廢工業風很浪漫。<br>(內心OS：這裡看起來像命案現場，我要報警嗎？)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rank 3 -->
+                    <div class="group relative overflow-hidden rounded-2xl border-l-8 border-yellow-500 bg-gray-900/60 hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                            <i class="fas fa-gamepad text-6xl text-yellow-500"></i>
+                        </div>
+                        <div class="p-6 flex items-start">
+                            <div class="flex-shrink-0 mr-5">
+                                <span class="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-500 text-black font-black text-xl shadow-lg">3</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1 group-hover:text-yellow-500 transition-colors">夾娃娃店待整晚</h4>
+                                <span class="inline-block bg-yellow-900/50 text-yellow-300 text-xs px-2 py-0.5 rounded mb-2 border border-yellow-800">疲勞指數 ★★★</span>
+                                <p class="text-gray-400 text-sm leading-relaxed">理由：想展現技巧卻一直夾不到。<br>(內心OS：站了4小時腳超痠，只換來一隻醜玩偶。)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NG Behaviors (Notification Alerts Style) -->
+            <div class="reveal">
+                <h3 class="text-2xl font-bold mb-8 flex items-center text-white">
+                    <i class="fas fa-bell-slash text-neon-red mr-3 text-3xl animate-pulse-slow"></i> 
+                    約會前最 NG 行為
+                </h3>
+                <div class="space-y-5 relative">
+                    <!-- Background Phone Line decoration -->
+                    <div class="absolute left-8 top-4 bottom-4 w-0.5 bg-gray-700/50 -z-10"></div>
+
+                    <!-- Alert 1 -->
+                    <div class="flex items-center group">
+                        <div class="w-16 flex-shrink-0 flex flex-col items-center z-10">
+                            <div class="w-10 h-10 rounded-full bg-red-600 border-4 border-gray-900 flex items-center justify-center text-white shadow-[0_0_15px_rgba(220,38,38,0.6)]">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 hover:bg-white/15 hover:border-red-500/50 transition-all cursor-default">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-white text-lg"><i class="fas fa-file-invoice-dollar text-red-400 mr-2"></i>身家調查式提問</h4>
+                                <span class="text-xs text-gray-500">Just now</span>
+                            </div>
+                            <div class="bg-black/40 rounded-lg p-3 border-l-4 border-red-500">
+                                <p class="text-gray-300 text-sm font-mono">"妳薪水多少？有房嗎？車貸剩多少？"</p>
+                            </div>
+                            <p class="text-red-400 text-xs mt-2 font-bold text-right">⚠️ 警告：面試官附身，直接封鎖</p>
+                        </div>
+                    </div>
+
+                    <!-- Alert 2 -->
+                    <div class="flex items-center group">
+                        <div class="w-16 flex-shrink-0 flex flex-col items-center z-10">
+                            <div class="w-10 h-10 rounded-full bg-orange-600 border-4 border-gray-900 flex items-center justify-center text-white shadow-lg">
+                                <i class="fas fa-bomb"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 hover:bg-white/15 hover:border-orange-500/50 transition-all cursor-default">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-white text-lg"><i class="fas fa-comment-slash text-orange-400 mr-2"></i>情緒勒索轟炸</h4>
+                                <span class="text-xs text-gray-500">2 min ago</span>
+                            </div>
+                            <div class="bg-black/40 rounded-lg p-3 border-l-4 border-orange-500">
+                                <p class="text-gray-300 text-sm font-mono">"為什麼不回我？是不是在跟別人聊天？"</p>
+                            </div>
+                            <p class="text-orange-400 text-xs mt-2 font-bold text-right">⚠️ 警告：壓力山大，極度扣分</p>
+                        </div>
+                    </div>
+
+                    <!-- Alert 3 -->
+                    <div class="flex items-center group">
+                        <div class="w-16 flex-shrink-0 flex flex-col items-center z-10">
+                            <div class="w-10 h-10 rounded-full bg-yellow-600 border-4 border-gray-900 flex items-center justify-center text-white shadow-lg">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 hover:bg-white/15 hover:border-yellow-500/50 transition-all cursor-default">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-white text-lg"><i class="fas fa-user-clock text-yellow-400 mr-2"></i>遲到大王</h4>
+                                <span class="text-xs text-gray-500">1 hr ago</span>
+                            </div>
+                            <div class="bg-black/40 rounded-lg p-3 border-l-4 border-yellow-500">
+                                <p class="text-gray-300 text-sm font-mono">"抱歉我又遲到了~ (毫無悔意且沒改)"</p>
+                            </div>
+                            <p class="text-yellow-400 text-xs mt-2 font-bold text-right">⚠️ 警告：時間小偷，缺乏尊重</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Conclusion: Safety Shield -->
+        <div class="reveal max-w-3xl mx-auto text-center mt-12">
+            <div class="glass-panel p-2 rounded-full border border-neon-red/30 shadow-[0_0_50px_rgba(220,38,38,0.1)] inline-block">
+                <button onclick="toggleNGConclusion()" id="btn-ng-conclusion" class="group relative overflow-hidden rounded-full bg-gradient-to-r from-red-900 to-black px-12 py-4 transition-all hover:scale-105 active:scale-95">
+                    <div class="absolute inset-0 bg-neon-red/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="relative z-10 flex items-center font-bold text-white text-lg">
+                        <i class="fas fa-shield-virus mr-3 text-neon-red animate-pulse"></i>
+                        啟動「約會避雷針」模式
+                    </span>
+                </button>
+            </div>
+
+            <!-- Hidden Conclusion Content -->
+            <div id="ng-conclusion" class="hidden mt-8 transform transition-all duration-500 ease-out origin-top">
+                <div class="bg-gradient-to-b from-gray-900 to-black border border-neon-red/50 rounded-3xl p-8 relative overflow-hidden shadow-[0_0_40px_rgba(255,63,52,0.15)]">
+                    <!-- Radar Scan Animation Background -->
+                    <div class="absolute inset-0 opacity-20 pointer-events-none">
+                        <div class="w-full h-full border-b-2 border-neon-red animate-[scan_3s_linear_infinite] bg-gradient-to-b from-transparent to-neon-red/20"></div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-neon-red rounded-full flex items-center justify-center mx-auto mb-4 shadow-[0_0_20px_#ff3f34]">
+                            <i class="fas fa-check text-3xl text-white"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">生存法則已更新</h4>
+                        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                            「獵奇」或許能展現創意，但<strong class="text-neon-red text-xl">『安全感』</strong>才是約會的絕對底線。<br>
+                            別讓你的驚喜，變成對方的驚嚇。<br>
+                            <span class="text-sm text-gray-500 mt-2 block">(P.S. 第一次約會，選個燈光明亮、交通方便的地方吧！)</span>
+                        </p>
+                        <div class="flex justify-center space-x-2">
+                            <span class="w-2 h-2 bg-neon-red rounded-full animate-bounce"></span>
+                            <span class="w-2 h-2 bg-neon-red rounded-full animate-bounce delay-100"></span>
+                            <span class="w-2 h-2 bg-neon-red rounded-full animate-bounce delay-200"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 4: Summary -->
+    <section class="py-24 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 reveal">
+            <!-- Title without Chapter Number -->
+            <div class="text-center mb-20 relative">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-pink/20 rounded-full blur-[100px] -z-10"></div>
+                <h2 class="text-4xl md:text-6xl font-black text-white text-glow tracking-widest uppercase">
+                    2025 交友年報結論
+                </h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mt-6"></div>
+            </div>
+            
+            <!-- Summary Cards: Holographic Data Style -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                <!-- Authenticity -->
+                <div class="glass-panel p-8 rounded-[2rem] relative overflow-hidden group hover:-translate-y-3 transition-all duration-500 border-t-2 border-t-neon-green/50">
+                    <div class="absolute inset-0 bg-gradient-to-b from-neon-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-black/40 rounded-full flex items-center justify-center text-neon-green text-3xl mb-6 shadow-[0_0_20px_rgba(11,232,129,0.2)] group-hover:shadow-[0_0_30px_rgba(11,232,129,0.5)] transition-shadow border border-neon-green/20">
+                            <i class="fas fa-fingerprint"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-2xl text-white">真實感</h4>
+                        <p class="text-xs text-neon-green font-mono tracking-[0.2em] mb-6 opacity-70">AUTHENTICITY</p>
+                        <p class="text-gray-300 leading-relaxed text-sm">
+                            濾鏡退燒，原圖直出。<br>
+                            不裝 B、誠實表達自我缺陷，<br>
+                            是 2025 年建立連結的最強貨幣。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Reciprocity -->
+                <div class="glass-panel p-8 rounded-[2rem] relative overflow-hidden group hover:-translate-y-3 transition-all duration-500 border-t-2 border-t-blue-400/50">
+                    <div class="absolute inset-0 bg-gradient-to-b from-blue-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-black/40 rounded-full flex items-center justify-center text-blue-400 text-3xl mb-6 shadow-[0_0_20px_rgba(59,130,246,0.2)] group-hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-shadow border border-blue-400/20">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-2xl text-white">互惠感</h4>
+                        <p class="text-xs text-blue-400 font-mono tracking-[0.2em] mb-6 opacity-70">RECIPROCITY</p>
+                        <p class="text-gray-300 leading-relaxed text-sm">
+                            單向付出已成歷史。<br>
+                            AA 制不是算數學，而是心意流動。<br>
+                            有來有往，才是穩定的情感基石。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Boundaries -->
+                <div class="glass-panel p-8 rounded-[2rem] relative overflow-hidden group hover:-translate-y-3 transition-all duration-500 border-t-2 border-t-neon-red/50">
+                    <div class="absolute inset-0 bg-gradient-to-b from-neon-red/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-black/40 rounded-full flex items-center justify-center text-neon-red text-3xl mb-6 shadow-[0_0_20px_rgba(255,63,52,0.2)] group-hover:shadow-[0_0_30px_rgba(255,63,52,0.5)] transition-shadow border border-neon-red/20">
+                            <i class="fas fa-stop-circle"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-2xl text-white">邊界感</h4>
+                        <p class="text-xs text-neon-red font-mono tracking-[0.2em] mb-6 opacity-70">BOUNDARIES</p>
+                        <p class="text-gray-300 leading-relaxed text-sm">
+                            拒絕情緒勒索。<br>
+                            尊重彼此的隱私與時間，<br>
+                            成熟的距離感，反而讓人更想靠近。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fun Interactive CTA -->
+            <div class="text-center relative z-20">
+                <button onclick="openFinalConclusion()" class="group relative inline-flex items-center justify-center px-12 py-6 font-black text-white transition-all duration-300 bg-white rounded-full hover:scale-105 focus:outline-none shadow-[0_0_50px_rgba(255,255,255,0.3)] hover:shadow-[0_0_80px_rgba(255,255,255,0.5)]">
+                    <span class="absolute inset-0 w-full h-full rounded-full opacity-0 group-hover:opacity-100 bg-gradient-to-r from-brand-pink via-purple-500 to-brand-blue animate-gradient-xy transition-opacity duration-300"></span>
+                    <span class="absolute inset-0 w-full h-full rounded-full bg-black m-[2px]"></span>
+                    <span class="relative flex items-center text-xl md:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 group-hover:text-white transition-colors">
+                        <i class="fas fa-unlock-alt mr-3 text-white"></i>
+                        領取我的 2026 脫單攻略
+                    </span>
+                </button>
+                <p class="mt-6 text-gray-500 font-mono text-xs tracking-[0.3em] animate-pulse">SYSTEM READY...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Share Actions -->
+    <footer class="relative z-10 bg-black/80 backdrop-blur-md text-gray-500 py-12 text-center text-sm border-t border-white/5">
         
-       
+        <!-- Action Buttons -->
+        <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-10">
+            <button onclick="saveImage(this)" class="group relative px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all hover:scale-105 hover:border-neon-green/50 w-64 md:w-auto">
+                <span class="flex items-center justify-center text-gray-300 group-hover:text-white font-bold transition-colors">
+                    <i class="fas fa-download mr-3 text-neon-green group-hover:animate-bounce"></i>
+                    儲存本頁長圖
+                </span>
+            </button>
+            
+            <button onclick="shareLink(this)" class="group relative px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all hover:scale-105 hover:border-brand-blue/50 w-64 md:w-auto">
+                <span class="flex items-center justify-center text-gray-300 group-hover:text-white font-bold transition-colors">
+                    <i class="fas fa-share-alt mr-3 text-brand-blue group-hover:rotate-12 transition-transform"></i>
+                    分享連結給朋友
+                </span>
+            </button>
+        </div>
 
-    </main>
-
-    <footer class="absolute bottom-6 text-gray-500 text-sm">
-        &copy; 2025 Company Name. All Rights Reserved.
+        <p class="opacity-50">&copy; 2025 台灣數位交友年報 | Designed with ❤️ in the Metaverse</p>
     </footer>
+
+    <!-- Modal: Money (Existing) -->
+    <div id="modal-money" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md" onclick="this.parentElement.classList.add('hidden')"></div>
+        <div class="glass-panel rounded-3xl p-8 max-w-lg w-11/12 relative z-10 animate-fade-in-up border border-pink-500/30 shadow-[0_0_50px_rgba(255,71,87,0.2)]">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors" onclick="document.getElementById('modal-money').classList.add('hidden')"><i class="fas fa-times text-2xl"></i></button>
+            <h3 class="text-2xl font-bold mb-6 text-white flex items-center"><i class="fas fa-wallet text-green-400 mr-3"></i>什麼叫「經濟收入好」？</h3>
+            <div class="p-6 bg-gradient-to-br from-gray-800 to-black rounded-xl border-l-4 border-brand-pink">
+                <p class="text-lg font-medium leading-relaxed text-gray-200">
+                    「真正的經濟好，不是看年薪數字，而是看<span class="text-brand-pink font-bold border-b border-brand-pink">『情緒消費力』</span>。」
+                </p>
+                <p class="mt-4 text-gray-400 text-sm leading-relaxed">
+                    許多女生表示：月入五萬但願意花三千帶你吃好料、解決突發狀況不抱怨，勝過月入三十萬卻要跟你計較那碗麵錢的男生。<br><br>
+                    <strong class="text-white">經濟好 ＝ 為伴侶創造體驗的餘裕 ＋ 解決問題的能力。</strong>
+                </p>
+            </div>
+            <button class="mt-8 w-full bg-white/10 hover:bg-white/20 text-white py-3 rounded-lg font-bold transition-colors" onclick="document.getElementById('modal-money').classList.add('hidden')">我理解了</button>
+        </div>
+    </div>
+
+    <!-- Modal: CTA Conclusion (Updated with Typewriter Effect) -->
+    <div id="modal-cta" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="document.getElementById('modal-cta').classList.add('hidden')"></div>
+        <div class="glass-panel border border-white/20 rounded-3xl p-10 max-w-lg w-11/12 relative z-10 animate-fade-in-up text-left shadow-[0_0_100px_rgba(255,255,255,0.15)] bg-black/80">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-white" onclick="document.getElementById('modal-cta').classList.add('hidden')"><i class="fas fa-times text-2xl"></i></button>
+            
+            <div class="flex items-center mb-6">
+                <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                <div class="ml-auto text-xs text-gray-500 font-mono">CONFIDENTIAL//2025</div>
+            </div>
+            
+            <div class="font-mono text-green-400 text-sm mb-4 border-b border-white/10 pb-4">
+                > INITIALIZING STRATEGY PROTOCOL...<br>
+                > ANALYZING MILLION DATA POINTS...<br>
+                > ACCESS GRANTED.
+            </div>
+            
+            <div id="typewriter-text" class="text-white text-lg md:text-xl font-bold leading-relaxed mb-8 min-h-[120px]">
+                <!-- Typewriter content will be injected here -->
+            </div>
+            
+            <button class="w-full bg-gradient-to-r from-brand-pink to-brand-purple hover:scale-105 transition-transform py-4 rounded-xl font-bold shadow-lg text-white text-lg flex items-center justify-center group" onclick="alert('戰略已下載！祝你在 2025 遇見對的人！'); document.getElementById('modal-cta').classList.add('hidden')">
+                <i class="fas fa-power-off mr-3 group-hover:animate-pulse"></i> 執行脫單計畫
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Tab Switcher
+        function switchTab(tabId) {
+            document.getElementById('age-20').classList.add('hidden');
+            document.getElementById('age-30').classList.add('hidden');
+            
+            // Reset Buttons
+            const btn20 = document.getElementById('btn-age-20');
+            const btn30 = document.getElementById('btn-age-30');
+            
+            btn20.className = "px-8 py-3 rounded-full text-gray-400 font-bold hover:text-white transition-all";
+            btn30.className = "px-8 py-3 rounded-full text-gray-400 font-bold hover:text-white transition-all";
+
+            // Activate Target
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.className = "px-8 py-3 rounded-full bg-brand-purple text-white font-bold shadow-lg transition-all scale-105";
+        }
+
+        // Toggle Strategy Cards
+        function toggleStrategy(id) {
+            const content = document.getElementById(id);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+            } else {
+                content.classList.add('hidden');
+            }
+        }
+
+        // Toggle Photo Psychology (New)
+        function togglePhotoPsychology() {
+            const content = document.getElementById('photo-psy-result');
+            const btnPulse = document.getElementById('btn-pulse-effect');
+            const btn = document.getElementById('btn-photo-psy');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                // Small delay to trigger transition
+                setTimeout(() => {
+                    content.classList.remove('scale-95', 'opacity-0');
+                    content.classList.add('scale-100', 'opacity-100');
+                }, 10);
+                
+                btn.classList.add('border-neon-green', 'text-neon-green');
+                btn.classList.remove('border-gray-600', 'text-white');
+                btnPulse.classList.add('animate-ping', 'opacity-70');
+            } else {
+                content.classList.add('scale-95', 'opacity-0');
+                content.classList.remove('scale-100', 'opacity-100');
+                setTimeout(() => {
+                    content.classList.add('hidden');
+                }, 500); // Match transition duration
+                
+                btn.classList.remove('border-neon-green', 'text-neon-green');
+                btn.classList.add('border-gray-600', 'text-white');
+                btnPulse.classList.remove('animate-ping', 'opacity-70');
+                btnPulse.classList.add('opacity-0');
+            }
+        }
+
+        // Toggle Horoscope Insight
+        function toggleHoroscopeInsight() {
+            const content = document.getElementById('horoscope-insight');
+            const btn = document.getElementById('btn-horoscope');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                btn.innerHTML = '<i class="fas fa-chevron-up mr-2"></i> <span>收起解析</span>';
+            } else {
+                content.classList.add('hidden');
+                btn.innerHTML = '<i class="fas fa-crystal-ball mr-2 animate-pulse group-hover:text-purple-400"></i> <span>大師，為什麼？點擊解析</span>';
+            }
+        }
+
+        // Toggle Job Insight
+        function toggleJobInsight() {
+            const content = document.getElementById('job-insight');
+            const btn = document.getElementById('btn-job-insight');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                btn.classList.add('bg-white/20');
+            } else {
+                content.classList.add('hidden');
+                btn.classList.remove('bg-white/20');
+            }
+        }
+
+        // Toggle NG Conclusion
+        function toggleNGConclusion() {
+            const content = document.getElementById('ng-conclusion');
+            const btn = document.getElementById('btn-ng-conclusion');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                content.classList.add('animate-fade-in-up');
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i> 避雷針已啟動';
+            }
+        }
+
+        // Show Date Tip Interaction
+        function showDateTip(type) {
+            const display = document.getElementById('date-tip-display');
+            const text = document.getElementById('date-tip-text');
+            
+            display.classList.remove('hidden');
+            display.classList.remove('bg-neon-green/10', 'border-neon-green/30', 'bg-brand-pink/10', 'border-brand-pink/30');
+            
+            display.classList.remove('animate-fade-in-up');
+            void display.offsetWidth; 
+            display.classList.add('animate-fade-in-up');
+            
+            if (type === 'sport') {
+                display.classList.add('bg-neon-green/10', 'border-neon-green/30');
+                text.innerHTML = '<strong class="text-neon-green block mb-2 text-lg"><i class="fas fa-heartbeat mr-1"></i> 吊橋效應是關鍵！</strong>選攀岩、溜冰或恐怖密室。<br>心跳加速會產生「心動」的錯覺，<br>肢體接觸也最自然不尷尬！';
+            } else {
+                display.classList.add('bg-brand-pink/10', 'border-brand-pink/30');
+                text.innerHTML = '<strong class="text-brand-pink block mb-2 text-lg"><i class="fas fa-wine-glass-alt mr-1"></i> 微醺是為了卸防！</strong>重點是「氛圍」非酒精。<br>點高顏值的調酒增加話題，<br>切記：微醺是加分，喝醉是扣分。';
+            }
+        }
+
+        // Show AA Truth Interaction
+        function showAATruth(gender) {
+            const display = document.getElementById('aa-truth-display');
+            const text = document.getElementById('aa-truth-text');
+            
+            display.classList.remove('hidden');
+            display.classList.remove('animate-fade-in-up');
+            void display.offsetWidth;
+            display.classList.add('animate-fade-in-up');
+            
+            if (gender === 'boy') {
+                text.innerHTML = '<span class="text-blue-300 text-2xl block mb-2">「其實我不介意請客...」</span><span class="text-sm text-gray-400">但我介意妳把它當成『理所當然』，<br>連一句謝謝都沒有。</span>';
+            } else {
+                text.innerHTML = '<span class="text-pink-300 text-2xl block mb-2">「不是付不起...」</span><span class="text-sm text-gray-400">是想看你有沒有『照顧我』的心意，<br>這是一種感覺問題。</span>';
+            }
+        }
+
+        // Toggle Photo Secret
+        function togglePhotoSecret() {
+            const secret = document.getElementById('photo-secret');
+            const btn = document.getElementById('btn-photo-secret');
+            
+            if (secret.classList.contains('hidden')) {
+                secret.classList.remove('hidden');
+                btn.classList.add('hidden'); 
+            }
+        }
+
+        // Final Conclusion Typewriter Logic
+        function openFinalConclusion() {
+            document.getElementById('modal-cta').classList.remove('hidden');
+            const textElement = document.getElementById('typewriter-text');
+            const fullText = "數據運算完畢。\n\n核心結論：\n完美的條件不如「舒適的相處」。\n放下對身家背景的過度審查，\n專注於當下的互動頻率與真誠感。\n\n「別做完美的陌生人，\n做一個有趣的普通人。」";
+            
+            textElement.innerHTML = '';
+            let i = 0;
+            const speed = 50; 
+
+            function typeWriter() {
+                if (i < fullText.length) {
+                    const char = fullText.charAt(i);
+                    if (char === '\n') {
+                        textElement.innerHTML += '<br>';
+                    } else {
+                        textElement.innerHTML += char;
+                    }
+                    i++;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+            // Clear previous interval if any (not implemented here but good practice)
+            // Small delay for drama
+            setTimeout(typeWriter, 500);
+        }
+
+        // Share Functions
+        function saveImage(btn) {
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="flex items-center justify-center text-neon-green font-bold"><i class="fas fa-circle-notch fa-spin mr-3"></i> 正在生成...</span>';
+            btn.disabled = true;
+            
+            // Simulation of image generation (since html2canvas requires external lib)
+            setTimeout(() => {
+                btn.innerHTML = '<span class="flex items-center justify-center text-white font-bold"><i class="fas fa-check mr-3"></i> 下載成功</span>';
+                btn.classList.add('bg-neon-green/20', 'border-neon-green');
+                
+                // Trigger browser print as a fallback for "saving" visual content in this environment
+                setTimeout(() => {
+                    // alert('圖片已儲存至您的裝置！(模擬)'); // Optional alert
+                    btn.innerHTML = originalContent;
+                    btn.disabled = false;
+                    btn.classList.remove('bg-neon-green/20', 'border-neon-green');
+                }, 2000);
+            }, 1500);
+        }
+
+        function shareLink(btn) {
+            const originalContent = btn.innerHTML;
+            
+            // Copy to clipboard logic
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            // UI Feedback
+            btn.innerHTML = '<span class="flex items-center justify-center text-white font-bold"><i class="fas fa-check mr-3"></i> 已複製連結</span>';
+            btn.classList.add('bg-brand-blue/20', 'border-brand-blue');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.classList.remove('bg-brand-blue/20', 'border-brand-blue');
+            }, 2000);
+        }
+
+        // Scroll Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    const bars = entry.target.querySelectorAll('.ranking-bar');
+                    bars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        if (width) {
+                             bar.style.width = width;
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

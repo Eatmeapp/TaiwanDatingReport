@@ -763,152 +763,147 @@
             </div>
         </div>
 
-        <!-- Visual Separator: Topic Switch -->
-        <div class="reveal flex flex-col items-center justify-center mb-24 opacity-50">
-            <div class="h-16 w-px bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
-            <div class="py-4 text-center">
-                <span class="text-xs font-mono tracking-[0.3em] text-blue-300">NEXT TOPIC: PERSONALITY DATA</span>
-            </div>
-            <div class="h-16 w-px bg-gradient-to-b from-white/50 via-white/20 to-transparent"></div>
-        </div>
-
-        <!-- Horoscope Section (Restored & Optimized) (Emoji 修正) -->
-        <div class="mb-16 reveal relative z-10">
-            <div class="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden group border border-white/20">
+        <!-- Horoscope & Jobs (Restored & Optimized) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
+            <!-- Horoscope -->
+            <div class="glass-panel p-8 rounded-3xl reveal relative overflow-hidden group">
                 <div class="absolute -right-10 -top-10 opacity-10 rotate-12 transition-transform group-hover:rotate-0 duration-700">
                     <i class="fas fa-globe-asia text-9xl text-purple-500"></i>
                 </div>
-                <h3 class="text-2xl md:text-3xl font-bold mb-8 text-purple-300 relative z-10 text-center"><i class="fas fa-star mr-2"></i>星座回覆率紅黑榜</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
+                <h3 class="text-xl font-bold mb-6 text-purple-300 relative z-10"><i class="fas fa-star mr-2"></i>星座回覆率紅黑榜</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6 relative z-10">
                     <div>
-                        <p class="font-bold text-blue-400 mb-4 border-b border-white/10 pb-2 text-lg text-center"><i class="fas fa-mars mr-2"></i>男性回覆率</p>
-                        <div class="space-y-4 text-base">
-                            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-green/30 transition-colors group/item cursor-default">
-                                <p class="text-neon-green font-bold mb-2 flex items-center justify-between"><span><i class="fas fa-arrow-up mr-1"></i>最高</span><span class="text-xs font-normal text-gray-500 bg-black/30 px-3 py-1 rounded-full">風/火象</span></p>
-                                <p class="text-gray-200 text-lg">雙子、天秤、射手</p>
+                        <p class="font-bold text-blue-400 mb-3 border-b border-white/10 pb-2"><i class="fas fa-mars mr-1"></i>男性回覆率</p>
+                        <div class="space-y-3 text-sm">
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5 hover:border-neon-green/30 transition-colors group/item cursor-default">
+                                <p class="text-neon-green font-bold mb-1 flex items-center justify-between flex-wrap gap-1">
+                                    <span><i class="fas fa-arrow-up mr-1"></i>最高</span>
+                                    <span class="text-xs font-normal text-gray-500 bg-black/30 px-2 py-0.5 rounded-full whitespace-nowrap">風/火象</span>
+                                </p>
+                                <p class="text-gray-300">雙子、天秤、射手</p>
                             </div>
-                            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-red/30 transition-colors group/item cursor-default">
-                                <p class="text-neon-red font-bold mb-2 flex items-center justify-between"><span><i class="fas fa-arrow-down mr-1"></i>最低</span><span class="text-xs font-normal text-gray-500 bg-black/30 px-3 py-1 rounded-full">土象三巨頭</span></p>
-                                <p class="text-gray-200 text-lg">摩羯、金牛、處女</p>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5 hover:border-neon-red/30 transition-colors group/item cursor-default">
+                                <p class="text-neon-red font-bold mb-1 flex items-center justify-between flex-wrap gap-1">
+                                    <span><i class="fas fa-arrow-down mr-1"></i>最低</span>
+                                    <span class="text-xs font-normal text-gray-500 bg-black/30 px-2 py-0.5 rounded-full whitespace-nowrap">土象三巨頭</span>
+                                </p>
+                                <p class="text-gray-300">摩羯、金牛、處女</p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <p class="font-bold text-pink-400 mb-4 border-b border-white/10 pb-2 text-lg text-center"><i class="fas fa-venus mr-2"></i>女性回覆率</p>
-                        <div class="space-y-4 text-base">
-                            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-green/30 transition-colors group/item cursor-default">
-                                <p class="text-neon-green font-bold mb-2 flex items-center justify-between"><span><i class="fas fa-arrow-up mr-1"></i>最高</span><span class="text-xs font-normal text-gray-500 bg-black/30 px-3 py-1 rounded-full">水象星座</span></p>
-                                <p class="text-gray-200 text-lg">雙魚、天蠍、巨蟹</p>
+                        <p class="font-bold text-pink-400 mb-3 border-b border-white/10 pb-2"><i class="fas fa-venus mr-1"></i>女性回覆率</p>
+                        <div class="space-y-3 text-sm">
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5 hover:border-neon-green/30 transition-colors group/item cursor-default">
+                                <p class="text-neon-green font-bold mb-1 flex items-center justify-between flex-wrap gap-1">
+                                    <span><i class="fas fa-arrow-up mr-1"></i>最高</span>
+                                    <span class="text-xs font-normal text-gray-500 bg-black/30 px-2 py-0.5 rounded-full whitespace-nowrap">水象星座</span>
+                                </p>
+                                <p class="text-gray-300">雙魚、天蠍、巨蟹</p>
                             </div>
-                            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-neon-red/30 transition-colors group/item cursor-default">
-                                <p class="text-neon-red font-bold mb-2 flex items-center justify-between"><span><i class="fas fa-arrow-down mr-1"></i>最低</span><span class="text-xs font-normal text-gray-500 bg-black/30 px-3 py-1 rounded-full">看心情組</span></p>
-                                <p class="text-gray-200 text-lg">水瓶、獅子、牡羊</p>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5 hover:border-neon-red/30 transition-colors group/item cursor-default">
+                                <p class="text-neon-red font-bold mb-1 flex items-center justify-between flex-wrap gap-1">
+                                    <span><i class="fas fa-arrow-down mr-1"></i>最低</span>
+                                    <span class="text-xs font-normal text-gray-500 bg-black/30 px-2 py-0.5 rounded-full whitespace-nowrap">看心情組</span>
+                                </p>
+                                <p class="text-gray-300">水瓶、獅子、牡羊</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mt-8 text-center relative z-10 border-t border-white/10 pt-8">
-                    <button onclick="toggleHoroscopeInsight()" id="btn-horoscope" class="group relative inline-flex items-center justify-center px-8 py-3 text-base font-bold text-purple-300 transition-all duration-300 border border-purple-500/30 rounded-full hover:bg-purple-500/10 hover:border-purple-400 hover:text-purple-200 hover:scale-105 focus:outline-none">
-                        <i class="fas fa-crystal-ball mr-2 animate-pulse group-hover:text-purple-400"></i> <span>大師，為什麼？點擊解析</span>
+                
+                <div class="mt-6 text-center relative z-10 border-t border-white/10 pt-6">
+                    <button onclick="toggleHoroscopeInsight()" id="btn-horoscope" class="group relative inline-flex items-center justify-center px-6 py-2 text-sm font-bold text-purple-300 transition-all duration-300 border border-purple-500/30 rounded-full hover:bg-purple-500/10 hover:border-purple-400 hover:text-purple-200 hover:scale-105 focus:outline-none w-full sm:w-auto">
+                        <i class="fas fa-crystal-ball mr-2 animate-pulse group-hover:text-purple-400"></i> 
+                        <span>大師，為什麼？點擊解析</span>
                     </button>
-                    <div id="horoscope-insight" class="hidden mt-8 bg-black/40 rounded-2xl p-6 border border-purple-500/20 text-left animate-fade-in-up backdrop-blur-sm max-w-3xl mx-auto">
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-                            <div class="flex flex-col items-center text-center">
-                                <div class="bg-blue-500/20 text-blue-400 p-3 rounded-xl mb-3 shadow-[0_0_15px_rgba(59,130,246,0.2)]"><i class="fas fa-comment-dots text-2xl"></i></div>
+                    <div id="horoscope-insight" class="hidden mt-6 bg-black/40 rounded-2xl p-5 border border-purple-500/20 text-left animate-fade-in-up backdrop-blur-sm">
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start">
+                                <div class="bg-blue-500/20 text-blue-400 p-2 rounded-lg mr-3 mt-1 shadow-[0_0_10px_rgba(59,130,246,0.2)] flex-shrink-0"><i class="fas fa-comment-dots"></i></div>
                                 <div>
-                                    <p class="font-bold text-white mb-2 text-base">風象男秒回？</p>
-                                    <p class="text-gray-400 leading-relaxed">「如果不聊天，人生還有什麼樂趣？」對<span class="text-neon-green font-bold">『話題』</span>有興趣。</p>
+                                    <p class="font-bold text-white mb-1">風象男為什麼秒回？</p>
+                                    <p class="text-gray-400 leading-relaxed">「如果不聊天，人生還有什麼樂趣？」他們不是對你有興趣，是對<span class="text-neon-green font-bold">『話題』</span>有興趣。</p>
                                 </div>
                             </div>
-                            <div class="flex flex-col items-center text-center border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-4">
-                                <div class="bg-gray-700/50 text-gray-400 p-3 rounded-xl mb-3 shadow-[0_0_15px_rgba(156,163,175,0.2)]"><i class="fas fa-user-lock text-2xl"></i></div>
+                            <div class="flex items-start">
+                                <div class="bg-gray-700/50 text-gray-400 p-2 rounded-lg mr-3 mt-1 shadow-[0_0_10px_rgba(156,163,175,0.2)] flex-shrink-0"><i class="fas fa-user-lock"></i></div>
                                 <div>
-                                    <p class="font-bold text-white mb-2 text-base">土象男已讀？</p>
-                                    <p class="text-gray-400 leading-relaxed">「這對話能解決問題嗎？」不能就先忙。<span class="text-neon-red font-bold">實用主義</span>至上。</p>
+                                    <p class="font-bold text-white mb-1">土象男為什麼已讀？</p>
+                                    <p class="text-gray-400 leading-relaxed">「這對話能解決問題嗎？能賺錢嗎？都不行？那先忙。」<span class="text-neon-red font-bold">實用主義</span>至上。</p>
                                 </div>
                             </div>
-                            <div class="flex flex-col items-center text-center border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-4">
-                                <div class="bg-pink-500/20 text-pink-400 p-3 rounded-xl mb-3 shadow-[0_0_15px_rgba(236,72,153,0.2)]"><i class="fas fa-heart text-2xl"></i></div>
+                            <div class="flex items-start">
+                                <div class="bg-pink-500/20 text-pink-400 p-2 rounded-lg mr-3 mt-1 shadow-[0_0_10px_rgba(236,72,153,0.2)] flex-shrink-0"><i class="fas fa-heart"></i></div>
                                 <div>
-                                    <p class="font-bold text-white mb-2 text-base">水象女高回覆？</p>
-                                    <p class="text-gray-400 leading-relaxed"><span class="text-neon-green font-bold">共情能力</span>強，覺得已讀不回沒禮貌，回覆是出於善良。</p>
+                                    <p class="font-bold text-white mb-1">水象女的高回覆？</p>
+                                    <p class="text-gray-400 leading-relaxed">天生<span class="text-neon-green font-bold">共情能力</span>強，覺得已讀不回很沒禮貌，但回了不代表喜歡你，只是心地善良。</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Jobs Section (Restored & Optimized) (Emoji 修正) -->
-        <div class="mb-20 reveal relative z-10">
-            <div class="glass-panel p-8 md:p-12 rounded-3xl flex flex-col h-full border border-white/20">
-                <h3 class="text-2xl md:text-3xl font-bold mb-8 text-purple-300 text-center"><i class="fas fa-briefcase mr-2"></i>最受歡迎職業 TOP10</h3>
+            <!-- Jobs -->
+            <div class="glass-panel p-8 rounded-3xl reveal flex flex-col h-full">
+                <h3 class="text-xl font-bold mb-6 text-purple-300"><i class="fas fa-briefcase mr-2"></i>最受歡迎職業 TOP10</h3>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
                     <!-- Female Favorite (Male Jobs) -->
-                    <div class="space-y-4">
-                        <p class="font-bold text-pink-400 mb-4 text-lg border-b border-white/10 pb-2 text-center"><i class="fas fa-female mr-2"></i>女生最愛</p>
-                        <div class="space-y-3">
-                            <!-- Top 3 Highlighting -->
-                            <div class="bg-gradient-to-r from-pink-500/20 to-transparent p-3 rounded-xl border-l-4 border-yellow-400 flex items-center hover:bg-white/5 transition-colors">
-                                <div class="w-10 h-10 rounded-full bg-yellow-400/20 text-yellow-400 flex items-center justify-center font-black text-xl mr-4 italic">1</div>
-                                <span class="text-white font-bold text-lg">醫師</span>
-                                <span class="ml-auto text-xs text-gray-400">社會地位高</span>
-                            </div>
-                            <div class="bg-white/5 p-3 rounded-xl border-l-4 border-gray-400 flex items-center hover:bg-white/10 transition-colors">
-                                <div class="w-10 h-10 rounded-full bg-gray-400/20 text-gray-400 flex items-center justify-center font-black text-xl mr-4 italic">2</div>
-                                <span class="text-gray-200 font-bold text-lg">工程師</span>
-                                <span class="ml-auto text-xs text-gray-400">單純收入高</span>
-                            </div>
-                            <div class="bg-white/5 p-3 rounded-xl border-l-4 border-orange-600 flex items-center hover:bg-white/10 transition-colors">
-                                <div class="w-10 h-10 rounded-full bg-orange-600/20 text-orange-600 flex items-center justify-center font-black text-xl mr-4 italic">3</div>
-                                <span class="text-gray-200 font-bold text-lg">教師</span>
-                                <span class="ml-auto text-xs text-gray-400">穩定顧家</span>
-                            </div>
+                    <div class="space-y-3">
+                        <p class="font-bold text-pink-400 mb-2 text-sm border-b border-white/10 pb-2">👩 女生最愛</p>
+                        <!-- Top 3 Highlighting -->
+                        <div class="bg-gradient-to-r from-pink-500/20 to-transparent p-2 rounded-lg border-l-4 border-yellow-400 flex items-center hover:bg-white/5 transition-colors">
+                            <span class="text-yellow-400 font-black text-xl mr-2 italic">1</span>
+                            <span class="text-white font-bold text-sm">醫師</span>
+                        </div>
+                        <div class="bg-white/5 p-2 rounded-lg border-l-4 border-gray-400 flex items-center hover:bg-white/5 transition-colors">
+                            <span class="text-gray-400 font-black text-xl mr-2 italic">2</span>
+                            <span class="text-gray-200 font-bold text-sm">工程師</span>
+                        </div>
+                        <div class="bg-white/5 p-2 rounded-lg border-l-4 border-orange-600 flex items-center hover:bg-white/5 transition-colors">
+                            <span class="text-orange-600 font-black text-xl mr-2 italic">3</span>
+                            <span class="text-gray-200 font-bold text-sm">教師</span>
                         </div>
                         <!-- 4-10 Tags -->
-                        <div class="flex flex-wrap gap-2 pt-2 justify-center md:justify-start">
-                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">4.公務員</span>
-                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">5.律師</span>
-                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">6.建築師</span>
-                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">7.機師</span>
-                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">8.金融業</span>
-                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">9.藥師</span>
-                            <span class="text-xs bg-white/5 hover:bg-brand-pink/20 border border-white/5 hover:border-brand-pink/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">10.創業者</span>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">4.公務員</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">5.律師</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">6.建築師</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">7.機師</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">8.金融業</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">9.藥師</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">10.創業者</span>
                         </div>
                     </div>
 
                     <!-- Male Favorite (Female Jobs) -->
-                    <div class="space-y-4">
-                        <p class="font-bold text-blue-400 mb-4 text-lg border-b border-white/10 pb-2 text-center"><i class="fas fa-male mr-2"></i>男生最愛</p>
-                        <div class="space-y-3">
-                            <!-- Top 3 Highlighting -->
-                            <div class="bg-gradient-to-r from-blue-500/20 to-transparent p-3 rounded-xl border-l-4 border-yellow-400 flex items-center hover:bg-white/5 transition-colors">
-                                <div class="w-10 h-10 rounded-full bg-yellow-400/20 text-yellow-400 flex items-center justify-center font-black text-xl mr-4 italic">1</div>
-                                <span class="text-white font-bold text-lg">教師</span>
-                                <span class="ml-auto text-xs text-gray-400">溫柔有耐心</span>
-                            </div>
-                            <div class="bg-white/5 p-3 rounded-xl border-l-4 border-gray-400 flex items-center hover:bg-white/10 transition-colors">
-                                <div class="w-10 h-10 rounded-full bg-gray-400/20 text-gray-400 flex items-center justify-center font-black text-xl mr-4 italic">2</div>
-                                <span class="text-gray-200 font-bold text-lg">護理師</span>
-                                <span class="ml-auto text-xs text-gray-400">會照顧人</span>
-                            </div>
-                            <div class="bg-white/5 p-3 rounded-xl border-l-4 border-orange-600 flex items-center hover:bg-white/10 transition-colors">
-                                <div class="w-10 h-10 rounded-full bg-orange-600/20 text-orange-600 flex items-center justify-center font-black text-xl mr-4 italic">3</div>
-                                <span class="text-gray-200 font-bold text-lg">空服員</span>
-                                <span class="ml-auto text-xs text-gray-400">外型亮眼</span>
-                            </div>
+                    <div class="space-y-3">
+                        <p class="font-bold text-blue-400 mb-2 text-sm border-b border-white/10 pb-2">👨 男生最愛</p>
+                        <!-- Top 3 Highlighting -->
+                        <div class="bg-gradient-to-r from-blue-500/20 to-transparent p-2 rounded-lg border-l-4 border-yellow-400 flex items-center hover:bg-white/5 transition-colors">
+                            <span class="text-yellow-400 font-black text-xl mr-2 italic">1</span>
+                            <span class="text-white font-bold text-sm">教師</span>
+                        </div>
+                        <div class="bg-white/5 p-2 rounded-lg border-l-4 border-gray-400 flex items-center hover:bg-white/5 transition-colors">
+                            <span class="text-gray-400 font-black text-xl mr-2 italic">2</span>
+                            <span class="text-gray-200 font-bold text-sm">護理師</span>
+                        </div>
+                        <div class="bg-white/5 p-2 rounded-lg border-l-4 border-orange-600 flex items-center hover:bg-white/5 transition-colors">
+                            <span class="text-orange-600 font-black text-xl mr-2 italic">3</span>
+                            <span class="text-gray-200 font-bold text-sm">空服員</span>
                         </div>
                         <!-- 4-10 Tags -->
-                        <div class="flex flex-wrap gap-2 pt-2 justify-center md:justify-start">
-                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">4.公務員</span>
-                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">5.人資</span>
-                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">6.設計師</span>
-                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">7.藥師</span>
-                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">8.行銷</span>
-                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">9.營養師</span>
-                            <span class="text-xs bg-white/5 hover:bg-blue-400/20 border border-white/5 hover:border-blue-400/30 px-3 py-1.5 rounded-full text-gray-400 transition-colors cursor-default">10.接案</span>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">4.公務員</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">5.人資</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">6.設計師</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">7.藥師</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">8.行銷</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">9.營養師</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">10.接案</span>
                         </div>
                     </div>
                 </div>
@@ -1234,7 +1229,35 @@
                         領取我的 2026 脫單攻略
                     </span>
                 </button>
-                <p class="mt-6 text-gray-500 font-mono text-xs tracking-[0.3em] animate-pulse">SYSTEM READY...</p>
+
+                <!-- New Download Button: Eatgether -->
+                <div class="mt-8">
+                    <button onclick="downloadApp()" class="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-gray-300 transition-all duration-300 border border-white/20 rounded-full hover:bg-white/10 hover:border-brand-pink/50 hover:text-white focus:outline-none hover:scale-105 hover:shadow-[0_0_30px_rgba(255,71,87,0.3)] backdrop-blur-sm w-full md:w-auto">
+                        <i class="fas fa-mobile-alt mr-3 text-brand-pink group-hover:animate-bounce"></i>
+                        <span class="text-lg tracking-wide">下載 Eatgether</span>
+                        <span class="ml-3 pl-3 border-l border-white/20 text-xs font-normal text-gray-500 group-hover:text-gray-300">開始你的實戰練習</span>
+                    </button>
+                </div>
+
+                <!-- New Download Button: PURPO -->
+                <div class="mt-4">
+                    <button onclick="downloadPurpoApp()" class="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-gray-300 transition-all duration-300 border border-white/20 rounded-full hover:bg-white/10 hover:border-brand-purple/50 hover:text-white focus:outline-none hover:scale-105 hover:shadow-[0_0_30px_rgba(95,39,205,0.3)] backdrop-blur-sm w-full md:w-auto">
+                        <i class="fas fa-comments mr-3 text-brand-purple group-hover:animate-pulse"></i>
+                        <span class="text-lg tracking-wide">下載 PURPO</span>
+                        <span class="ml-3 pl-3 border-l border-white/20 text-xs font-normal text-gray-500 group-hover:text-gray-300">更多元的聊天體驗</span>
+                    </button>
+                </div>
+
+                <!-- New Button: EG PRIVATE -->
+                <div class="mt-4">
+                    <button onclick="window.open('https://www.egprivate.com/', '_blank')" class="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-gray-300 transition-all duration-300 border border-white/20 rounded-full hover:bg-white/10 hover:border-yellow-500 hover:text-white focus:outline-none hover:scale-105 hover:shadow-[0_0_30px_rgba(234,179,8,0.3)] backdrop-blur-sm w-full md:w-auto">
+                        <i class="fas fa-crown mr-3 text-yellow-500 group-hover:animate-pulse"></i>
+                        <span class="text-lg tracking-wide">了解 EG PRIVATE</span>
+                        <span class="ml-3 pl-3 border-l border-white/20 text-xs font-normal text-gray-500 group-hover:text-gray-300">私人高端社交服務</span>
+                    </button>
+                </div>
+
+                <p class="mt-8 text-gray-500 font-mono text-xs tracking-[0.3em] animate-pulse">SYSTEM READY...</p>
             </div>
         </div>
     </section>
@@ -1244,12 +1267,7 @@
         
         <!-- Action Buttons -->
         <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-10">
-            <button onclick="saveImage(this)" class="group relative px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all hover:scale-105 hover:border-neon-green/50 w-64 md:w-auto">
-                <span class="flex items-center justify-center text-gray-300 group-hover:text-white font-bold transition-colors">
-                    <i class="fas fa-download mr-3 text-neon-green group-hover:animate-bounce"></i>
-                    儲存本頁長圖
-                </span>
-            </button>
+            <!-- 移除儲存圖片按鈕 -->
             
             <button onclick="shareLink(this)" class="group relative px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all hover:scale-105 hover:border-brand-blue/50 w-64 md:w-auto">
                 <span class="flex items-center justify-center text-gray-300 group-hover:text-white font-bold transition-colors">
@@ -1259,7 +1277,7 @@
             </button>
         </div>
 
-        <p class="opacity-50">&copy; 2025 台灣數位交友年報 | Designed with ❤️ in the Metaverse</p>
+        <p class="opacity-50">&copy; 2025台灣數位交友年報 | 2025 Funiverse Co., Ltd.</p>
     </footer>
 
     <!-- Modal: Money (Existing) -->
@@ -1307,6 +1325,120 @@
             <button class="w-full bg-gradient-to-r from-brand-pink to-brand-purple hover:scale-105 transition-transform py-4 rounded-xl font-bold shadow-lg text-white text-lg flex items-center justify-center group" onclick="alert('戰略已下載！祝你在 2025 遇見對的人！'); document.getElementById('modal-cta').classList.add('hidden')">
                 <i class="fas fa-power-off mr-3 group-hover:animate-pulse"></i> 執行脫單計畫
             </button>
+        </div>
+    </div>
+
+    <!-- Share Menu Modal -->
+    <div id="share-menu-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md" onclick="document.getElementById('share-menu-modal').classList.add('hidden')"></div>
+        <div class="glass-panel rounded-3xl p-8 max-w-sm w-11/12 relative z-10 animate-fade-in-up text-center border border-white/20">
+            <h3 class="text-2xl font-bold mb-6 text-white">分享至社群</h3>
+            <div class="grid grid-cols-1 gap-4">
+                <button onclick="shareTo('facebook')" class="flex items-center justify-center py-3 px-4 rounded-xl bg-[#1877F2] text-white hover:opacity-90 transition-opacity">
+                    <i class="fab fa-facebook-f mr-3"></i> Facebook
+                </button>
+                <button onclick="shareTo('line')" class="flex items-center justify-center py-3 px-4 rounded-xl bg-[#06C755] text-white hover:opacity-90 transition-opacity">
+                    <i class="fab fa-line mr-3"></i> LINE
+                </button>
+                <button onclick="shareTo('instagram')" class="flex items-center justify-center py-3 px-4 rounded-xl bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white hover:opacity-90 transition-opacity">
+                    <i class="fab fa-instagram mr-3"></i> Instagram 限時動態
+                </button>
+                <button onclick="shareTo('copy')" class="flex items-center justify-center py-3 px-4 rounded-xl bg-gray-700 text-white hover:bg-gray-600 transition-colors border border-gray-500">
+                    <i class="fas fa-link mr-3"></i> 複製連結
+                </button>
+            </div>
+            <button class="mt-6 text-gray-400 hover:text-white text-sm" onclick="document.getElementById('share-menu-modal').classList.add('hidden')">取消</button>
+        </div>
+    </div>
+
+    <!-- Instagram Story Generator Modal -->
+    <div id="ig-story-modal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="document.getElementById('ig-story-modal').classList.add('hidden')"></div>
+        <div class="relative z-10 flex flex-col items-center w-full max-w-md h-full md:h-auto md:max-h-[90vh] p-4">
+            
+            <!-- Close Button -->
+            <button class="absolute top-4 right-4 md:-right-12 md:top-0 text-white hover:text-gray-300 transition-colors z-50" onclick="document.getElementById('ig-story-modal').classList.add('hidden')">
+                <i class="fas fa-times text-3xl"></i>
+            </button>
+
+            <!-- Story Preview Container (9:16 Aspect Ratio) -->
+            <div id="story-preview" class="w-full aspect-[9/16] relative overflow-hidden shadow-2xl flex flex-col items-center text-center select-none bg-gray-900 border border-white/10 rounded-2xl">
+                <!-- Background Image -->
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')] bg-cover bg-center opacity-50"></div>
+                <!-- Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-b from-purple-900/40 via-black/60 to-black/90"></div>
+                
+                <!-- Content Wrapper -->
+                <div class="relative z-10 w-full h-full flex flex-col justify-between p-8 pt-12 pb-16">
+                    
+                    <!-- Header -->
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center space-x-2 mb-4 opacity-80">
+                            <span class="w-1 h-1 bg-white rounded-full"></span>
+                            <span class="text-white text-[10px] tracking-[0.3em] font-light uppercase">Taiwan Digital Dating Report</span>
+                            <span class="w-1 h-1 bg-white rounded-full"></span>
+                        </div>
+                        
+                        <h1 class="text-7xl font-black text-white leading-none tracking-tighter mb-2" style="text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+                            2025
+                        </h1>
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-2 rounded-full">
+                            <h2 class="text-2xl font-bold text-white tracking-wide">
+                                台灣數位<span class="text-brand-pink">交友年報</span>
+                            </h2>
+                        </div>
+                    </div>
+
+                    <!-- Main Visual / Data Highlight -->
+                    <div class="flex-1 flex flex-col justify-center items-center my-6">
+                        <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl w-full max-w-[85%] transform rotate-1 shadow-2xl">
+                            <div class="text-left border-l-2 border-brand-pink pl-4 mb-4">
+                                <p class="text-gray-400 text-xs uppercase tracking-widest mb-1">Top Insight</p>
+                                <p class="text-white font-bold text-lg leading-snug">
+                                    "完美的條件不如<br>舒適的相處"
+                                </p>
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <div class="text-5xl">❤️</div>
+                                <div class="text-right">
+                                    <p class="text-yellow-400 font-black text-3xl">TOP 1</p>
+                                    <p class="text-gray-400 text-xs">生存法則</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer / Sticker Area -->
+                    <div class="flex flex-col items-center gap-5">
+                        <p class="text-white/80 text-sm font-medium">👇 點擊下方連結解鎖完整攻略 👇</p>
+                        
+                        <!-- Authentic Link Sticker Style -->
+                        <div class="bg-white text-black px-4 py-3 rounded-lg font-semibold text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] flex items-center gap-3 max-w-full transform -rotate-2">
+                            <div class="bg-blue-500 text-white rounded-full p-1 w-6 h-6 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-link text-xs"></i>
+                            </div>
+                            <span class="text-blue-600 font-bold uppercase tracking-tight truncate">taiwandatingreport.eatgether.com</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Static Decor Elements -->
+                <div class="absolute top-10 right-[-10px] text-7xl opacity-10 rotate-12 blur-[1px]">✨</div>
+                <div class="absolute bottom-32 left-[-10px] text-8xl opacity-10 -rotate-12 blur-[1px]">💘</div>
+            </div>
+
+            <!-- Actions -->
+            <div class="mt-6 w-full text-center space-y-3">
+                <p class="text-gray-400 text-sm mb-2"><i class="fas fa-camera mr-2"></i>截圖上方畫面，然後發佈到 IG</p>
+                <div class="flex gap-3 justify-center">
+                    <button onclick="document.getElementById('ig-story-modal').classList.add('hidden')" class="px-6 py-3 rounded-full bg-gray-800 text-white font-bold hover:bg-gray-700 transition-colors border border-gray-600">
+                        稍後再說
+                    </button>
+                    <button onclick="window.open('https://www.instagram.com/create/story', '_blank')" class="px-8 py-3 rounded-full bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white font-bold hover:opacity-90 transition-opacity shadow-lg flex items-center">
+                        <i class="fab fa-instagram mr-2"></i> 前往 Instagram
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1509,24 +1641,71 @@
         }
 
         function shareLink(btn) {
-            const originalContent = btn.innerHTML;
-            
-            // Copy to clipboard logic
-            const dummy = document.createElement('input');
-            document.body.appendChild(dummy);
-            dummy.value = window.location.href;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
+            document.getElementById('share-menu-modal').classList.remove('hidden');
+        }
 
-            // UI Feedback
-            btn.innerHTML = '<span class="flex items-center justify-center text-white font-bold"><i class="fas fa-check mr-3"></i> 已複製連結</span>';
-            btn.classList.add('bg-brand-blue/20', 'border-brand-blue');
-            
-            setTimeout(() => {
-                btn.innerHTML = originalContent;
-                btn.classList.remove('bg-brand-blue/20', 'border-brand-blue');
-            }, 2000);
+        function shareTo(platform) {
+            const url = 'https://taiwandatingreport.eatgether.com/';
+            let shareUrl = '';
+
+            if (platform === 'facebook') {
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                window.open(shareUrl, '_blank');
+            } else if (platform === 'line') {
+                shareUrl = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`;
+                window.open(shareUrl, '_blank');
+            } else if (platform === 'instagram') {
+                // Open Custom Story Generator Modal
+                document.getElementById('share-menu-modal').classList.add('hidden');
+                document.getElementById('ig-story-modal').classList.remove('hidden');
+                return;
+            } else if (platform === 'copy') {
+                // Copy link logic
+                const dummy = document.createElement('input');
+                document.body.appendChild(dummy);
+                dummy.value = url;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+                alert('連結已複製！');
+            }
+            document.getElementById('share-menu-modal').classList.add('hidden');
+        }
+
+        // App Download Logic (Eatgether)
+        function downloadApp() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Android Detection
+            if (/android/i.test(userAgent)) {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.eatme.eatgether&hl=zh_TW";
+            }
+            // iOS Detection
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://apps.apple.com/tw/app/eatgether-%E8%81%9A%E6%9C%83%E4%BA%A4%E5%8F%8B%E6%B4%BB%E5%8B%95%E7%B4%84%E6%9C%83app/id1121788143";
+            }
+            // Desktop / Others
+            else {
+                window.location.href = "https://www.eatgether.com/";
+            }
+        }
+
+        // App Download Logic (PURPO)
+        function downloadPurpoApp() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Android Detection -> Redirect to Apple Store Link (As per instruction)
+            if (/android/i.test(userAgent)) {
+                window.location.href = "https://apps.apple.com/tw/app/purpo-%E8%81%8A%E5%A4%A9%E4%BA%A4%E5%8F%8Bapp/id6478517336";
+            }
+            // iOS Detection -> Redirect to Google Play Link (As per instruction)
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://play.google.com/store/apps/details?id=tw.purpo&hl=zh_TW";
+            }
+            // Desktop / Others
+            else {
+                window.location.href = "https://www.purpo.app/";
+            }
         }
 
         // Scroll Observer

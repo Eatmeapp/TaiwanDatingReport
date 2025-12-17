@@ -162,7 +162,13 @@
     <!-- Hero Section -->
     <header class="relative min-h-screen flex items-center justify-center pt-20">
         <div class="relative z-10 text-center px-4 max-w-4xl mx-auto reveal active">
-            <!-- 修正：標題縮小且單排顯示 (whitespace-nowrap) -->
+            
+            <!-- Eatgether Brand Logo -->
+            <div class="mb-8 flex justify-center items-center animate-fade-in-up">
+                <img src="logo底.png" alt="Eatgether Logo" class="max-w-[180px] md:max-w-[220px] h-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:scale-105 transition-transform duration-300">
+            </div>
+
+            <!-- 標題縮小且單排顯示 -->
             <h1 class="text-3xl md:text-6xl font-black mb-6 leading-tight tracking-wide drop-shadow-2xl whitespace-nowrap">
                 2025 <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-500 to-purple-500 animate-pulse">台灣數位交友年報</span>
             </h1>
@@ -1352,7 +1358,7 @@
         </div>
     </div>
 
-    <!-- Instagram Story Generator Modal (Refined Visuals) -->
+    <!-- Instagram Story Generator Modal (Refined Visuals - Static for Screenshot) -->
     <div id="ig-story-modal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
         <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="document.getElementById('ig-story-modal').classList.add('hidden')"></div>
         <div class="relative z-10 flex flex-col items-center w-full max-w-md h-full md:h-auto md:max-h-[90vh] p-4">
@@ -1364,7 +1370,7 @@
 
             <!-- Story Preview Container (9:16 Aspect Ratio) -->
             <div id="story-preview" class="w-full aspect-[9/16] relative overflow-hidden shadow-2xl flex flex-col items-center text-center select-none bg-gray-900 border border-white/10 rounded-2xl">
-                <!-- Background Image -->
+                <!-- Static Background Image (No Animation) -->
                 <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')] bg-cover bg-center opacity-50"></div>
                 <!-- Gradient Overlay -->
                 <div class="absolute inset-0 bg-gradient-to-b from-purple-900/40 via-black/60 to-black/90"></div>
@@ -1390,7 +1396,7 @@
                         </div>
                     </div>
 
-                    <!-- Main Visual / Data Highlight -->
+                    <!-- Main Visual / Data Highlight (Card Style) -->
                     <div class="flex-1 flex flex-col justify-center items-center my-6">
                         <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl w-full max-w-[85%] transform rotate-1 shadow-2xl">
                             <div class="text-left border-l-2 border-brand-pink pl-4 mb-4">
@@ -1413,8 +1419,8 @@
                     <div class="flex flex-col items-center gap-5">
                         <p class="text-white/80 text-sm font-medium">👇 點擊下方連結解鎖完整攻略 👇</p>
                         
-                        <!-- Authentic Link Sticker Style -->
-                        <div class="bg-white text-black px-4 py-3 rounded-lg font-semibold text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] flex items-center gap-3 max-w-full transform -rotate-2">
+                        <!-- Authentic Link Sticker Style (Static) -->
+                        <div class="bg-white text-black px-4 py-3 rounded-lg font-semibold text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] flex items-center gap-3 max-w-full transform -rotate-2 cursor-pointer">
                             <div class="bg-blue-500 text-white rounded-full p-1 w-6 h-6 flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-link text-xs"></i>
                             </div>
@@ -1423,7 +1429,7 @@
                     </div>
                 </div>
                 
-                <!-- Static Decor Elements -->
+                <!-- Static Decor Elements (No Animation) -->
                 <div class="absolute top-10 right-[-10px] text-7xl opacity-10 rotate-12 blur-[1px]">✨</div>
                 <div class="absolute bottom-32 left-[-10px] text-8xl opacity-10 -rotate-12 blur-[1px]">💘</div>
             </div>
@@ -1740,11 +1746,11 @@
         function downloadPurpoApp() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // Android Detection
+            // Android Detection -> Redirect to Apple Store Link (As per instruction)
             if (/android/i.test(userAgent)) {
                 window.location.href = "https://play.google.com/store/apps/details?id=tw.purpo&hl=zh_TW";
             }
-            // iOS Detection
+            // iOS Detection -> Redirect to Google Play Link (As per instruction)
             else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 window.location.href = "https://apps.apple.com/tw/app/purpo-%E8%81%8A%E5%A4%A9%E4%BA%A4%E5%8F%8Bapp/id6478517336";
             }

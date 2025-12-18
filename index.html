@@ -165,7 +165,10 @@
             
             <!-- Eatgether Brand Logo -->
             <div class="mb-8 flex justify-center items-center animate-fade-in-up">
-                <img src="logo底.png" alt="Eatgether Logo" class="max-w-[180px] md:max-w-[220px] h-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:scale-105 transition-transform duration-300">
+                <img src="./logo.png" 
+                     onerror="this.style.display='none';"
+                     alt="Eatgether Logo" 
+                     class="max-w-[180px] md:max-w-[220px] h-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:scale-105 transition-transform duration-300">
             </div>
 
             <!-- 標題縮小且單排顯示 -->
@@ -1665,8 +1668,6 @@
                 // Open Custom Story Generator Modal
                 document.getElementById('share-menu-modal').classList.add('hidden');
                 document.getElementById('ig-story-modal').classList.remove('hidden');
-                // Trigger Image Generation
-                generateStoryImage();
                 return;
             } else if (platform === 'copy') {
                 // Copy link logic
@@ -1679,49 +1680,6 @@
                 alert('連結已複製！');
             }
             document.getElementById('share-menu-modal').classList.add('hidden');
-        }
-
-        // Generate Story Image with html2canvas
-        function generateStoryImage() {
-            const preview = document.getElementById('story-preview');
-            const helpText = document.getElementById('story-help-text');
-            
-            // If already generated, don't do it again
-            if (preview.getAttribute('data-generated') === 'true') return;
-            
-            // Update UI to show loading
-            if (helpText) {
-                helpText.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> 正在生成圖片...';
-            }
-
-            // Small delay to ensure modal visibility for html2canvas
-            setTimeout(() => {
-                html2canvas(preview, {
-                    useCORS: true,
-                    scale: 2, // Higher quality
-                    backgroundColor: '#111827' // Fallback
-                }).then(canvas => {
-                    const imgUrl = canvas.toDataURL('image/png');
-                    const img = document.createElement('img');
-                    img.src = imgUrl;
-                    img.className = 'w-full h-full object-cover rounded-2xl shadow-2xl';
-                    img.alt = 'IG Story Template';
-                    
-                    // Clear HTML preview and show Image
-                    preview.innerHTML = '';
-                    preview.appendChild(img);
-                    preview.setAttribute('data-generated', 'true');
-                    
-                    if (helpText) {
-                        helpText.innerHTML = '<i class="fas fa-fingerprint mr-2"></i>長按圖片儲存，然後發佈到 IG';
-                    }
-                }).catch(err => {
-                    console.error('Story generation failed:', err);
-                    if (helpText) {
-                        helpText.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> 生成失敗，請直接截圖';
-                    }
-                });
-            }, 500);
         }
 
         // App Download Logic (Eatgether)
@@ -1746,11 +1704,11 @@
         function downloadPurpoApp() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // Android Detection -> Redirect to Apple Store Link (As per instruction)
+            // Android Detection
             if (/android/i.test(userAgent)) {
                 window.location.href = "https://play.google.com/store/apps/details?id=tw.purpo&hl=zh_TW";
             }
-            // iOS Detection -> Redirect to Google Play Link (As per instruction)
+            // iOS Detection
             else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 window.location.href = "https://apps.apple.com/tw/app/purpo-%E8%81%8A%E5%A4%A9%E4%BA%A4%E5%8F%8Bapp/id6478517336";
             }

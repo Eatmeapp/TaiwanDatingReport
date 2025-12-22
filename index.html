@@ -1648,46 +1648,110 @@
         }
 
         function downloadStrategy() {
-            // Stop typing immediately
+            // 1. Stop typing animation and show full text immediately
             if (typewriterTimeout) clearTimeout(typewriterTimeout);
             
-            // Force full text to be displayed
             const textElement = document.getElementById('typewriter-text');
-            const fullTextContent = "數據運算完畢。<br><br>核心結論：<br>完美的條件不如「舒適的相處」。<br>放下對身家背景的過度審查，<br>專注於當下的互動頻率與真誠感。<br><br>「別做完美的陌生人，<br>做一個有趣的普通人。」";
-            textElement.innerHTML = fullTextContent;
-            
-            alert('戰略已下載！祝你在 2026 遇見對的人！');
+            const fullTextHTML = "數據運算完畢。<br><br>核心結論：<br>完美的條件不如「舒適的相處」。<br>放下對身家背景的過度審查，<br>專注於當下的互動頻率與真誠感。<br><br>「別做完美的陌生人，<br>做一個有趣的普通人。」";
+            textElement.innerHTML = fullTextHTML;
             
             const modal = document.querySelector('#modal-cta');
-            const modalContent = modal.querySelector('.glass-panel');
+            const container = modal.querySelector('.glass-panel');
+            const btn = container.querySelector('button.w-full'); // CTA button
+            const closeBtn = container.querySelector('button.absolute'); // Close X button
             
-            // Temporary hide the button and close icon for screenshot
-            const btn = modalContent.querySelector('button.w-full');
-            const closeBtn = modalContent.querySelector('button.absolute');
+            const originalBtnText = btn.innerHTML;
             
-            if(btn) btn.style.display = 'none';
-            if(closeBtn) closeBtn.style.display = 'none';
+            // 2. Show loading state
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-3"></i> 正在生成戰略卡...';
+            btn.disabled = true;
 
-            // Generate Image
-            html2canvas(modalContent, {
-                backgroundColor: '#111827', // Force dark background
-                scale: 2 // High resolution
-            }).then(canvas => {
-                // Download
-                const link = document.createElement('a');
-                link.download = '2026_Dating_Strategy.png';
-                link.href = canvas.toDataURL();
-                link.click();
+            setTimeout(() => {
+                // 3. Hide buttons for screenshot capture
+                btn.style.display = 'none';
+                closeBtn.style.display = 'none';
 
-                // Restore UI and Close
-                if(btn) btn.style.display = '';
-                if(closeBtn) closeBtn.style.display = '';
-                document.getElementById('modal-cta').classList.add('hidden');
-            }).catch(err => {
-                console.error("Screenshot failed", err);
-                if(btn) btn.style.display = '';
-                if(closeBtn) closeBtn.style.display = '';
-            });
+                // 4. Generate Canvas
+                html2canvas(container, {
+                    backgroundColor: '#111827', // Force dark background
+                    scale: 3, // High resolution
+                    logging: false,
+                    useCORS: true
+                }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+                    if (isMobile) {
+                        // === MOBILE FLOW: Show Image for Long Press ===
+                        
+                        // Create a temporary overlay div to show the result
+                        const resultDiv = document.createElement('div');
+                        resultDiv.className = 'absolute inset-0 bg-gray-900 rounded-3xl z-50 flex flex-col items-center justify-center p-6 text-center';
+                        
+                        // Generated Image
+                        const resultImg = document.createElement('img');
+                        resultImg.src = imgData;
+                        resultImg.className = 'w-full h-auto max-h-[55vh] object-contain rounded-xl shadow-2xl mb-4 border border-white/20';
+                        
+                        // Success Message
+                        const msg = document.createElement('h4');
+                        msg.className = 'text-white font-bold text-lg mb-1';
+                        msg.innerText = '戰略已下載！祝你在 2026 遇見對的人！';
+
+                        // Long Press Hint
+                        const hint = document.createElement('p');
+                        hint.className = 'text-neon-green text-sm mb-6 animate-pulse';
+                        hint.innerHTML = '<i class="fas fa-fingerprint mr-2"></i>請長按上方圖片儲存';
+
+                        // Close Button for the Result View
+                        const closeResultBtn = document.createElement('button');
+                        closeResultBtn.className = 'px-8 py-3 bg-white/10 rounded-full text-white font-bold border border-white/20 hover:bg-white/20 transition-all w-full';
+                        closeResultBtn.innerText = '關閉';
+                        
+                        closeResultBtn.onclick = () => {
+                            resultDiv.remove();
+                            // Restore original UI
+                            btn.style.display = '';
+                            closeBtn.style.display = '';
+                            btn.innerHTML = originalBtnText;
+                            btn.disabled = false;
+                            modal.classList.add('hidden'); // Close the main modal too
+                        };
+
+                        resultDiv.appendChild(resultImg);
+                        resultDiv.appendChild(msg);
+                        resultDiv.appendChild(hint);
+                        resultDiv.appendChild(closeResultBtn);
+                        
+                        // Add overlay to container
+                        container.appendChild(resultDiv);
+
+                    } else {
+                        // === PC FLOW: Auto Download ===
+                        const link = document.createElement('a');
+                        link.download = '2026_Dating_Strategy.png';
+                        link.href = imgData;
+                        link.click();
+                        
+                        alert('戰略已下載！祝你在 2026 遇見對的人！');
+                        
+                        // Restore UI
+                        btn.style.display = '';
+                        closeBtn.style.display = '';
+                        btn.innerHTML = originalBtnText;
+                        btn.disabled = false;
+                        modal.classList.add('hidden');
+                    }
+                }).catch(err => {
+                    console.error("Screenshot failed", err);
+                    alert('生成失敗，請直接截圖保存！');
+                    // Restore UI on error
+                    btn.style.display = '';
+                    closeBtn.style.display = '';
+                    btn.innerHTML = originalBtnText;
+                    btn.disabled = false;
+                });
+            }, 100);
         }
 
         function shareLink(btn) {

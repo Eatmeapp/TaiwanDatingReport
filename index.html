@@ -179,7 +179,7 @@
             <div class="inline-block glass-panel rounded-full px-6 py-2 mb-8 border border-white/20">
                 <span class="text-brand-pink font-bold tracking-widest text-sm md:text-base">TAIWAN DIGITAL DATING REPORT</span>
             </div>
-
+            
             <!-- Brand Introduction (New Section) -->
             <div class="max-w-4xl mx-auto mb-10 px-2 animate-fade-in-up" style="animation-delay: 0.1s;">
                 <div class="relative bg-black/40 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-2xl text-left shadow-2xl">
@@ -191,7 +191,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <span class="block text-lg md:text-xl text-blue-200 tracking-wider mb-8 font-light italic">
                 別再憑感覺約會！百萬數據解密戀愛生存指南
             </span>
@@ -1344,7 +1344,7 @@
                 <!-- Typewriter content will be injected here -->
             </div>
             
-            <button class="w-full bg-gradient-to-r from-brand-pink to-brand-purple hover:scale-105 transition-transform py-4 rounded-xl font-bold shadow-lg text-white text-lg flex items-center justify-center group" onclick="alert('戰略已下載！祝你在 2025 遇見對的人！'); document.getElementById('modal-cta').classList.add('hidden')">
+            <button class="w-full bg-gradient-to-r from-brand-pink to-brand-purple hover:scale-105 transition-transform py-4 rounded-xl font-bold shadow-lg text-white text-lg flex items-center justify-center group" onclick="downloadStrategy()">
                 <i class="fas fa-power-off mr-3 group-hover:animate-pulse"></i> 執行脫單計畫
             </button>
         </div>
@@ -1465,6 +1465,9 @@
     </div>
 
     <script>
+        // Global variables
+        let typewriterTimeout = null;
+
         // Tab Switcher
         function switchTab(tabId) {
             document.getElementById('age-20').classList.add('hidden');
@@ -1616,6 +1619,9 @@
 
         // Final Conclusion Typewriter Logic
         function openFinalConclusion() {
+            // Reset timeout
+            if (typewriterTimeout) clearTimeout(typewriterTimeout);
+
             document.getElementById('modal-cta').classList.remove('hidden');
             const textElement = document.getElementById('typewriter-text');
             const fullText = "數據運算完畢。\n\n核心結論：\n完美的條件不如「舒適的相處」。\n放下對身家背景的過度審查，\n專注於當下的互動頻率與真誠感。\n\n「別做完美的陌生人，\n做一個有趣的普通人。」";
@@ -1633,7 +1639,7 @@
                         textElement.innerHTML += char;
                     }
                     i++;
-                    setTimeout(typeWriter, speed);
+                    typewriterTimeout = setTimeout(typeWriter, speed);
                 }
             }
             // Clear previous interval if any (not implemented here but good practice)
@@ -1641,25 +1647,47 @@
             setTimeout(typeWriter, 500);
         }
 
-        // Share Functions
-        function saveImage(btn) {
-            const originalContent = btn.innerHTML;
-            btn.innerHTML = '<span class="flex items-center justify-center text-neon-green font-bold"><i class="fas fa-circle-notch fa-spin mr-3"></i> 正在生成...</span>';
-            btn.disabled = true;
+        function downloadStrategy() {
+            // Stop typing immediately
+            if (typewriterTimeout) clearTimeout(typewriterTimeout);
             
-            // Simulation of image generation (since html2canvas requires external lib)
-            setTimeout(() => {
-                btn.innerHTML = '<span class="flex items-center justify-center text-white font-bold"><i class="fas fa-check mr-3"></i> 下載成功</span>';
-                btn.classList.add('bg-neon-green/20', 'border-neon-green');
-                
-                // Trigger browser print as a fallback for "saving" visual content in this environment
-                setTimeout(() => {
-                    // alert('圖片已儲存至您的裝置！(模擬)'); // Optional alert
-                    btn.innerHTML = originalContent;
-                    btn.disabled = false;
-                    btn.classList.remove('bg-neon-green/20', 'border-neon-green');
-                }, 2000);
-            }, 1500);
+            // Force full text to be displayed
+            const textElement = document.getElementById('typewriter-text');
+            const fullTextContent = "數據運算完畢。<br><br>核心結論：<br>完美的條件不如「舒適的相處」。<br>放下對身家背景的過度審查，<br>專注於當下的互動頻率與真誠感。<br><br>「別做完美的陌生人，<br>做一個有趣的普通人。」";
+            textElement.innerHTML = fullTextContent;
+            
+            alert('戰略已下載！祝你在 2026 遇見對的人！');
+            
+            const modal = document.querySelector('#modal-cta');
+            const modalContent = modal.querySelector('.glass-panel');
+            
+            // Temporary hide the button and close icon for screenshot
+            const btn = modalContent.querySelector('button.w-full');
+            const closeBtn = modalContent.querySelector('button.absolute');
+            
+            if(btn) btn.style.display = 'none';
+            if(closeBtn) closeBtn.style.display = 'none';
+
+            // Generate Image
+            html2canvas(modalContent, {
+                backgroundColor: '#111827', // Force dark background
+                scale: 2 // High resolution
+            }).then(canvas => {
+                // Download
+                const link = document.createElement('a');
+                link.download = '2026_Dating_Strategy.png';
+                link.href = canvas.toDataURL();
+                link.click();
+
+                // Restore UI and Close
+                if(btn) btn.style.display = '';
+                if(closeBtn) closeBtn.style.display = '';
+                document.getElementById('modal-cta').classList.add('hidden');
+            }).catch(err => {
+                console.error("Screenshot failed", err);
+                if(btn) btn.style.display = '';
+                if(closeBtn) closeBtn.style.display = '';
+            });
         }
 
         function shareLink(btn) {
@@ -1680,6 +1708,8 @@
                 // Open Custom Story Generator Modal
                 document.getElementById('share-menu-modal').classList.add('hidden');
                 document.getElementById('ig-story-modal').classList.remove('hidden');
+                // Trigger Image Generation
+                generateStoryImage();
                 return;
             } else if (platform === 'copy') {
                 // Copy link logic
@@ -1692,6 +1722,49 @@
                 alert('連結已複製！');
             }
             document.getElementById('share-menu-modal').classList.add('hidden');
+        }
+
+        // Generate Story Image with html2canvas
+        function generateStoryImage() {
+            const preview = document.getElementById('story-preview');
+            const helpText = document.getElementById('story-help-text');
+            
+            // If already generated, don't do it again
+            if (preview.getAttribute('data-generated') === 'true') return;
+            
+            // Update UI to show loading
+            if (helpText) {
+                helpText.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> 正在生成圖片...';
+            }
+
+            // Small delay to ensure modal visibility for html2canvas
+            setTimeout(() => {
+                html2canvas(preview, {
+                    useCORS: true,
+                    scale: 2, // Higher quality
+                    backgroundColor: '#111827' // Fallback
+                }).then(canvas => {
+                    const imgUrl = canvas.toDataURL('image/png');
+                    const img = document.createElement('img');
+                    img.src = imgUrl;
+                    img.className = 'w-full h-full object-cover rounded-2xl shadow-2xl';
+                    img.alt = 'IG Story Template';
+                    
+                    // Clear HTML preview and show Image
+                    preview.innerHTML = '';
+                    preview.appendChild(img);
+                    preview.setAttribute('data-generated', 'true');
+                    
+                    if (helpText) {
+                        helpText.innerHTML = '<i class="fas fa-fingerprint mr-2"></i>長按圖片儲存，然後發佈到 IG';
+                    }
+                }).catch(err => {
+                    console.error('Story generation failed:', err);
+                    if (helpText) {
+                        helpText.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> 生成失敗，請直接截圖';
+                    }
+                });
+            }, 500);
         }
 
         // App Download Logic (Eatgether)
@@ -1716,13 +1789,13 @@
         function downloadPurpoApp() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // Android Detection
+            // Android Detection -> Redirect to Apple Store Link (As per instruction)
             if (/android/i.test(userAgent)) {
-                window.location.href = "https://play.google.com/store/apps/details?id=tw.purpo&hl=zh_TW";
-            }
-            // iOS Detection
-            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 window.location.href = "https://apps.apple.com/tw/app/purpo-%E8%81%8A%E5%A4%A9%E4%BA%A4%E5%8F%8Bapp/id6478517336";
+            }
+            // iOS Detection -> Redirect to Google Play Link (As per instruction)
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://play.google.com/store/apps/details?id=tw.purpo&hl=zh_TW";
             }
             // Desktop / Others
             else {

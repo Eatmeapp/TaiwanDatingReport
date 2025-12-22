@@ -1386,7 +1386,7 @@
             <!-- Story Preview Container (9:16 Aspect Ratio) -->
             <div id="story-preview" class="w-full aspect-[9/16] relative overflow-hidden shadow-2xl flex flex-col items-center text-center select-none bg-gray-900 border border-white/10 rounded-2xl">
                 <!-- Static Background Image (No Animation) -->
-                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80')] bg-cover bg-center opacity-50"></div>
+                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" crossorigin="anonymous" class="absolute inset-0 w-full h-full object-cover opacity-50">
                 <!-- Gradient Overlay -->
                 <div class="absolute inset-0 bg-gradient-to-b from-purple-900/40 via-black/60 to-black/90"></div>
                 
@@ -1692,7 +1692,11 @@
                         const resultImg = document.createElement('img');
                         resultImg.src = imgData;
                         resultImg.className = 'w-full h-auto max-h-[55vh] object-contain rounded-xl shadow-2xl mb-4 border border-white/20';
-                        
+                        // Mobile fix: allow pointer events on the image
+                        resultImg.style.pointerEvents = 'auto';
+                        resultImg.style.userSelect = 'auto';
+                        resultImg.style.webkitUserSelect = 'auto';
+
                         // Success Message
                         const msg = document.createElement('h4');
                         msg.className = 'text-white font-bold text-lg mb-1';
@@ -1809,10 +1813,19 @@
                     backgroundColor: '#111827' // Fallback
                 }).then(canvas => {
                     const imgUrl = canvas.toDataURL('image/png');
+                    
+                    // Remove 'select-none' class to allow interaction on mobile
+                    preview.classList.remove('select-none');
+
                     const img = document.createElement('img');
                     img.src = imgUrl;
                     img.className = 'w-full h-full object-cover rounded-2xl shadow-2xl';
                     img.alt = 'IG Story Template';
+                    
+                    // Ensure touch events work on the image
+                    img.style.pointerEvents = 'auto';
+                    img.style.userSelect = 'auto';
+                    img.style.webkitUserSelect = 'auto';
                     
                     // Clear HTML preview and show Image
                     preview.innerHTML = '';
@@ -1855,11 +1868,11 @@
 
             // Android Detection -> Redirect to Apple Store Link (As per instruction)
             if (/android/i.test(userAgent)) {
-                window.location.href = "https://apps.apple.com/tw/app/purpo-%E8%81%8A%E5%A4%A9%E4%BA%A4%E5%8F%8Bapp/id6478517336";
+                window.location.href = "https://play.google.com/store/apps/details?id=tw.purpo&hl=zh_TW";
             }
             // iOS Detection -> Redirect to Google Play Link (As per instruction)
             else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.location.href = "https://play.google.com/store/apps/details?id=tw.purpo&hl=zh_TW";
+                window.location.href = "https://apps.apple.com/tw/app/purpo-%E8%81%8A%E5%A4%A9%E4%BA%A4%E5%8F%8Bapp/id6478517336";
             }
             // Desktop / Others
             else {
